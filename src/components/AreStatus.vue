@@ -9,9 +9,8 @@
     <bm-view >
       <!--<bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>-->
       <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-      <bm-marker :position="{lng: 116.404, lat: 39.915}" :dragging="false" :icon="{url: this.img, size: {width: 300, height: 157}}"></bm-marker>
-      <bm-ground :bounds="{ne: {lng: 110, lat: 40}, sw:{lng: 0, lat: 0}}" imageURL="require('../assets/椭圆.png')">
-     </bm-ground>
+      <bm-marker :position="{lng: 116.404, lat: 39.915}" :dragging="true" :icon="{url: this.img2, size: {width: 600, height: 120}}"></bm-marker>
+      <bm-marker :position="{lng: 116.410, lat: 39.915}" :dragging="true" :icon="{url: this.img1, size: {width: 300, height: 157}}"></bm-marker>
       <!-- <bm-city-list anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-city-list>-->
       <!--<bm-boundary 
         v-for="province in provinces" 
@@ -60,7 +59,8 @@ export default {
       sumCost:1,
       sumRepay:1,
       midnight:{style:'midnight'},
-      img1:require('../assets/点.png')
+      img1:require('../assets/点.png'),
+      img2:require('../assets/椭圆.png')
     };
   },
   created(){
