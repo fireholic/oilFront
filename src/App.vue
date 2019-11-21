@@ -5,8 +5,22 @@
         <h3 style="color:#87CEEB">&nbsp;&nbsp;&nbsp;泸州石油天然气管道外部风险智能监控系统</h3>
       </div>
       <el-container >
-      <el-aside style="width:150px">
-        <el-menu default-active="1" 
+      <el-aside style="width:70px;text-align: center;">
+          <div class="icon_css" @mouseenter="enter(id)">
+          <router-link to="/NowControl">
+          <i class="el-icon-search">
+            <div class="on-font" slot="title">实时监控</div>
+          </i>
+         </router-link>
+          </div>
+          <div  id="index1" class="icon_css">
+          <router-link to="/History">
+          <i class="el-icon-time">
+            <div class="on-font" slot="title">历史分析</div>
+          </i>
+         </router-link>
+          </div>
+        <!--<el-menu default-active="1" 
         :collapse="false"
         :router="true"
         background-color="#2c3e50"
@@ -20,7 +34,7 @@
             <i class="el-icon-time"></i>
             <span slot="title">历史分析</span>
           </el-menu-item>
-        </el-menu>
+        </el-menu>-->
       </el-aside>
        <el-main>
             <router-view/>
@@ -31,7 +45,23 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+
+  },
+  data() {
+    return {
+  
+    };
+  },
+  methods:{
+    enter(id){
+       console.log(id);
+    }
+  },
+  watch: {
+
+  }
 }
 </script>
 <style lang="scss">
@@ -86,12 +116,17 @@ export default {
 
   }
 i{
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -2px;
+  color: #ffff;
+  font-size: 30px;
+}
+.icon_css{
+  margin: 9px 0px 9px 0px;
+  width:70px;
+  color: #ffff;
+  font-size: 40px;
 }
 .on-font{
-  display: inline-block;
-  vertical-align: middle;
+  margin-top: 10px;
+  font-size: 14px;
 }
 </style>
