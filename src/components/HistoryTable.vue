@@ -9,7 +9,7 @@
     :data="tableData"
      v-loading="loading"
     stripe
-    height="100%"
+    height="600px"
     borer
     style="width: 100%;"
     :row-class-name="tableRowClassName">

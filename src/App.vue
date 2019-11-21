@@ -5,17 +5,16 @@
         <h3 style="color:#87CEEB">&nbsp;&nbsp;&nbsp;泸州石油天然气管道外部风险智能监控系统</h3>
       </div>
       <el-container >
-      <el-aside style="width:150px;height:1000px;" >
+      <el-aside style="width:150px">
         <el-menu default-active="1" 
         :collapse="false"
         :router="true"
-        :unique-opened="true"
         background-color="#2c3e50"
         text-color="#FFFFFF"
         :collapse-transition="false">
           <el-menu-item index="1" route="/NowControl">
             <i class="el-icon-search"></i>
-            <span slot="title">实时监控</span>
+            <span class="on-font" slot="title">实时监控</span>
           </el-menu-item>
           <el-menu-item index="2" route="/History">
             <i class="el-icon-time"></i>
@@ -23,9 +22,9 @@
           </el-menu-item>
         </el-menu>
       </el-aside>
-      <el-main class="">
+       <el-main>
             <router-view/>
-         </el-main>
+       </el-main>
     </el-container>
   </div>
 </template>
@@ -67,6 +66,10 @@ export default {
   background: #27408B;
   color:#BFEFFF
 }
+.el-aside{
+     opacity:0.5;
+     background-color:#2c3e50;
+}
 .el-menu{
   border:0px;
 }
@@ -82,4 +85,13 @@ export default {
    background-color: rgb(48, 65, 86);
 
   }
+i{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.on-font{
+  display: inline-block;
+  vertical-align: middle;
+}
 </style>

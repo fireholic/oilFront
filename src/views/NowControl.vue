@@ -1,25 +1,15 @@
 <template>
   <div class="NowControl">
-    <div>
-    <div style="width:400px;display:inline;float:left">
-    <div style="width:400px;height:200px;margin-bottom:20px;background-color:#4B0082">
-      <span>监控风险点</span>
-    </div>
-     <div style="width:400px;height:450px; background-color:#4B0082">
-      <span>监控详情</span>
-    </div>
-    </div>
-    <div style="display:inline;float:right">
-    <div style="width:1650px;height:650px;margin-right:20px;background-color:#4B0082;">
-      <span>监控详情</span>
-    </div>
-    </div>
-    </div>
-    <div style="display:inline;float:right">
-    <div style="width:2100px;height:200px;margin:50px 10px 0px 0px;background-color:#4B0082;"> 
-      <span>异常内容列表</span>
-    </div>
-    </div>
+     <el-row>
+       <el-col :span="4" style="">
+           <div class="step">监控风险点</div>
+           <div class="step">监控详情</div>
+       </el-col>
+       <el-col style="height:560px" :span="19" offset="1"><div class="grid-content">监控视频</div></el-col>
+     </el-row>
+     <el-row>
+        <el-col :span="24"><div class="grid-content">异常内容列表</div></el-col>
+     </el-row>
   </div>
 </template>
 
@@ -52,6 +42,18 @@ export default {
 .echarts {
   width: 100%;
   height: 400px;
+}
+.el-col{
+  color:#3B3B3B;
+  margin-bottom: 20px;
+  font-size:30px;
+  height:200px;
+  background:#66CD00;
+}
+.step{
+  margin-bottom: 20px;
+  height:270px;
+  background:#4876FF;
 }
 .container {
   margin: 10px 0px;
