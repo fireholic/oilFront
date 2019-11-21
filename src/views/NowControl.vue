@@ -1,13 +1,21 @@
 <template>
   <div id="NowControl">
      <el-row>
-       <el-col :span="4">
+        <el-col :span="4">
            <div style="text-align:center;margin-bottom:10px">
              <el-button-group  style="width:300px">
             <button @click="dialogVisible=true">全局</button>
-            <button>监控</button>
+            <button @click="dialogVisible=false">监控</button>
             </el-button-group>
            </div>
+        </el-col>
+     </el-row>
+     <el-row v-show="dialogVisible==true">
+        <AreStatus/>
+     </el-row>
+
+     <el-row v-show="dialogVisible==false">
+       <el-col :span="4">
            <div class="step" style="height:150px">
              <MonitorStatus/>
            </div>
@@ -15,12 +23,13 @@
              <MonitorDetail/>
            </div>
        </el-col>
-       <el-col style="height:560px;" :span="19" offset="1">
+       <el-col style="height:500px;" :span="19" offset="1">
          <div>
             <MonitorVideo/>
            </div>
          </el-col>
      </el-row>
+
      <el-row>
         <el-col :span="24">
           <div style="padding-bottom: 20px; height:200px"> 
@@ -28,14 +37,6 @@
             </div>
           </el-col>
      </el-row>
-     <div>
-     <el-dialog
-          title="全局监控"
-          :visible.sync="dialogVisible"
-          width="80%">
-         <AreStatus/>
-       </el-dialog>
-     </div>
   </div>
 </template>
 
