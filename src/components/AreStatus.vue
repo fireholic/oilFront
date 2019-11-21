@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="areStatus">
       全局弹出框
   </div>
 </template>

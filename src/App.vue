@@ -64,7 +64,7 @@ export default {
 .el-main{
   //background: #f4f4f4;
   background: #27408B;
-  color:#BFEFFF
+  color:#BFEFFF;
 }
 .el-aside{
      opacity:0.5;

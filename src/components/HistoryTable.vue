@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="historyTable">
     <div style="padding-bottom:15px;border-bottom: 2px solid #e6e6e6;">
     <label style='color:#404040;margin:10px;font-size:30px;font-weight:bold'>全年异常事件列表</label> 
       <el-input  style="width:200px;float:right;padding-right:80px" placeholder="指定事件搜索" clearable>
