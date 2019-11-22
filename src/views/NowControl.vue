@@ -2,10 +2,10 @@
   <div id="NowControl">
      <el-row>
         <el-col :span="4">
-           <div style="text-align:center;margin-bottom:10px">
-             <el-button-group  style="width:300px">
-            <button @click="dialogVisible=true">全局</button>
-            <button @click="dialogVisible=false">监控</button>
+           <div style="text-align:center;margin-bottom:20px">
+            <el-button-group class="colWitdth" >
+            <button class="btn button1" @click="dialogVisible=true">全局</button>
+            <button class="btn button1" @click="dialogVisible=false">监控</button>
             </el-button-group>
            </div>
         </el-col>
@@ -13,9 +13,8 @@
      <el-row v-show="dialogVisible==true">
         <AreStatus/>
      </el-row>
-
      <el-row v-show="dialogVisible==false">
-       <el-col :span="4">
+       <el-col :span="5">
            <div class="step" style="height:150px">
              <MonitorStatus/>
            </div>
@@ -23,7 +22,7 @@
              <MonitorDetail/>
            </div>
        </el-col>
-       <el-col style="height:500px;" :span="19" offset="1">
+       <el-col style="height:500px;" :span="18" offset="1">
          <div>
             <MonitorVideo/>
            </div>
@@ -80,10 +79,12 @@ export default {
   width: 100%;
   height: 400px;
 }
+.colWitdth{
+  width:305px;
+}
 .el-col{
-  color:#3B3B3B;
-  font-size:15px;
-  /*
+  font-size:10px;
+  /*color:#3B3B3B;
   text-align: center;
   margin-bottom: 20px;
   height:200px;
@@ -91,15 +92,17 @@ export default {
 }
 .step{
   margin-bottom: 20px;
-  background:#4876FF;
+  width:305px;
+  border-radius:10px;
+  background:  #17314bCC;
 }
-button{
-  border-radius:20px;
-  margin: 0px 20px 0px 10px;
-  height:40px;
-  width:110px;
-  background-color: #2c3e50;
-  color:#ffff;
+.button1{
+  /*border-radius:20px;
+  margin: 0px 0px 0px 10px;*/
+  height:32px;
+  width:152px;
+  background: url(../assets/btn.png) no-repeat;
+  color:#FFFFFF;
 }
 .container {
   margin: 10px 0px;

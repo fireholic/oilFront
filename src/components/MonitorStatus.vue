@@ -1,25 +1,25 @@
 <template>
 <div id="monitorStatus">
   <el-col :span="24">
-      <div class="tips">监控风险点</div>
-      <div class="inner">
+      <div class="tipPoint">监控风险点</div>
+      <div class="inner_css">
         <el-row style="height:100px">
              <el-col :span="7" offset="1">
-               <div class="basic-data-item">
+               <div class="basic-data-item1">
                <div>董允坝</div>
-               <div class="basic-data-num">107</div>
+               <div class="basic-data-num1">107</div>
               </div>
              </el-col>
              <el-col :span="8">
-               <div class="basic-data-item">
+               <div class="basic-data-item1">
                <div>张湾</div>
-               <div class="basic-data-num">70</div>
+               <div class="basic-data-num1">70</div>
               </div>
               </el-col>
              <el-col :span="7">
-               <div class="basic-data-item">
+               <div class="basic-data-item1">
                <div>黄包山</div>
-               <div class="basic-data-num">3</div>
+               <div class="basic-data-num1">3</div>
               </div>
               </el-col>
         </el-row>
@@ -49,28 +49,29 @@
   }
 </script>
 <style>
-.inner{
+.inner_css{
     margin: 15px;
-    background-color: #2c3e50;
+    border-radius:10px;
+    background: #24496e;
 }
-.basic-data-num {
+.basic-data-num1 {
   margin-top: 10px;
-  font-size: 35px;
+  font-size: 25px;
   height: 35px;
 }
-.basic-data-item {
+.basic-data-item1 {
   padding-top:10px;
-  font-size: 20px;
-  color: #e0d8d8;
+  font-size: 15px;
+  color: #FFFFFF;
   text-align: center;
 }
 .smallh{
   height:50px;
 }
-.tips{
-    margin:3px 0px 0px 15px;
-    font-size: 17px;
-    color: #e0d8d8;
+.tipPoint{
+    margin: 13px 0px 0px 17px;
+    font-size: 15px;
+    color: #FFFFFF;
     text-align: left;
 }
 </style>

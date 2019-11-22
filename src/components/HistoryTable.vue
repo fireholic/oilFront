@@ -105,9 +105,9 @@ import "echarts/lib/component/tooltip";
         //});    
        },
        customerList(){
-           this.axios.get(`/v1/customers`).then(res => {
-           this.customers = res.data;
-        });
+           //this.axios.get(`/v1/customers`).then(res => {
+           //this.customers = res.data;
+        //});
        },
        tableRowClassName({row}){
         if(row.percent>100){

@@ -1,19 +1,19 @@
 <template>
   <div id="app" class="hostApp">
-      <div>
+      <div style="background-color:#17314b;padding:12px 0px 5px 0px">
         <img style="float:left;height:35px;padding-left:50px;"  src="./assets/logo.png?v=20171015"  alt=".">
         <h3 style="color:#87CEEB">&nbsp;&nbsp;&nbsp;泸州石油天然气管道外部风险智能监控系统</h3>
       </div>
       <el-container >
-      <el-aside style="width:70px;text-align: center;">
-          <div class="icon_css" @mouseenter="enter(id)">
+      <el-aside id="left" style="width:70px;text-align: center;">
+          <div :class="{active:checkOne=='NowControl'}" class="icon_css" @click="check()">
           <router-link to="/NowControl">
-          <i class="el-icon-search">
+          <i class="el-icon-pie-chart">
             <div class="on-font" slot="title">实时监控</div>
           </i>
          </router-link>
           </div>
-          <div  id="index1" class="icon_css">
+          <div :class="{active:checkOne=='history'}" class="icon_css" @click="check()">
           <router-link to="/History">
           <i class="el-icon-time">
             <div class="on-font" slot="title">历史分析</div>
@@ -49,14 +49,19 @@ export default {
   components: {
 
   },
+   created(){
+     this.checkOne=this.$router.history.current.name
+      console.log(this.checkOne);
+  },
   data() {
     return {
-  
+     checkOne:""
     };
   },
   methods:{
-    enter(id){
-       console.log(id);
+    check(){
+      this.checkOne=this.$router.history.current.name;
+      console.log(this.checkOne);
     }
   },
   watch: {
@@ -71,15 +76,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #283b4e;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#left.div{
+  width:70px;
+  color: #ffff;
+  font-size: 38px;
 }
 .icons-container{
     margin: 20px;
@@ -93,12 +93,14 @@ export default {
 }
 .el-main{
   //background: #f4f4f4;
-  background: #27408B;
+  //background: #27408B;
+  margin: 17px 0px 0px 12px;
+  padding:0 !important;
   color:#BFEFFF;
 }
 .el-aside{
-     opacity:0.5;
-     background-color:#2c3e50;
+    // opacity:1;
+    background-color:#17314b;
 }
 .el-menu{
   border:0px;
@@ -106,27 +108,27 @@ export default {
 .login_bg {
     width: 100%;
     height: 100%;
-    background: url("/assets/8.jpg") no-repeat 0 0 /cover;
   }
   .hostApp{
    position: fixed;
    width:100%;
-   height:100%;
-   background-color: rgb(48, 65, 86);
-
+   //height:100%;
+   //background-color: rgb(48, 65, 86);
+   background: url(./assets/bg1.jpg) no-repeat;
+	// background: cover;
   }
 i{
   color: #ffff;
   font-size: 30px;
 }
 .icon_css{
-  margin: 9px 0px 9px 0px;
-  width:70px;
-  color: #ffff;
-  font-size: 40px;
+  padding: 5px 0px 5px 0px;
+}
+.active{
+ background-color: #7A67EE;
 }
 .on-font{
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 13px;
 }
 </style>
