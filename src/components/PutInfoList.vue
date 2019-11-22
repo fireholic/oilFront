@@ -1,9 +1,27 @@
 <template>
 <div id="putInfoList">
    <div style="padding-bottom:15px;border-bottom: 2px solid #e6e6e6;">
-    <label style='color:#FFFF;margin:10px;font-size:15px;'>异常内容列表</label>
-     </div>
-  <el-table
+    <label class="tips">异常内容列表</label>
+    </div>
+  <table>
+     <tr>
+      <th style="margin-left:10%">日期</th>
+      <th>时间</th>
+      <th>预警级别</th>
+      <th>预警位置</th>
+      <th>预警描述</th>
+      <th>操作</th>
+     </tr>
+      <tr v-for="(item,i) in tableData" :key="i">
+      <td width="10%" height="40">{{item.date}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.level}}</td>
+      <td>{{item.point}}</td>
+      <td>{{item.remark}}</td>
+      <td>{{item.operate}}</td>
+     </tr>
+  </table>
+  <!--<el-table
     :data="tableData"
      v-loading="loading"
     stripe
@@ -39,7 +57,7 @@
       label="操作"
       sortable>
     </el-table-column>
-  </el-table>
+  </el-table>-->
 </div>
 </template>
 
@@ -72,7 +90,25 @@
 </script>
 <style>
   #putInfoList{
-      background:#4876FF;
-      margin-bottom: 50px
+      border-radius:10px;
+      background:#151b2bD9;
+      margin:0px 0px 10px 3px;
   }
+  #putInfoList .tips{
+    color:#FFFFFF;
+    font-size:15px;
+    margin: 10px 0px 0px 15px;
+    border-bottom: 1px;
+    border-bottom-color: #FFFFFF
+  }
+   #putInfoList .el-table{
+     background:#151b2bD9;
+   }
+   #putInfoList table{
+     color:#FFFFFF;
+     text-align: center;
+     font-size:15px;
+     width: 90%;
+     margin: 20px 0px 20px 0px;
+   }
 </style>

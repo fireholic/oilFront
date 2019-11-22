@@ -3,21 +3,40 @@
   <el-col :span="24">
       <div>
          <el-row>
-             <el-col :span="12" style="margin:5px 0px 5px 5px;text-align: left;">
-                 <div class="tips">监控详情</div>
+             <el-col :span="11">
+                 <div class="tipPoint" style="margin:20px 0px 0px 20px">监控详情</div>
              </el-col>
-             <el-col :span="10" style="margin:5px 3px 5px 5px;">
-              <el-input placeholder="风险搜索" suffix-icon="el-icon-search"  v-model="input1"></el-input>
-             </el-col>         
+             <el-col :span="11" offset="1">
+              <el-input placeholder="风险搜索" suffix-icon="el-icon-search" type="text"  v-model="input1" ></el-input>  
+             </el-col>    
         </el-row>
       </div>
-      <div class="inner">
-        <el-collapse v-model="actionName" accordion>
-        <el-collapse-item title="董允坝" name="1">
+      <div class="tital" >
+            <el-col :span="12" >
+            <div :class="{btn2:dialogVisible==true}" class="button2" @click="dialogVisible=true">实时监控</div>
+            <div :class="{btnbck:dialogVisible==true}" class="btnbck1"> </div>
+            </el-col>
+            <el-col :span="12" >
+            <div :class="{btn2:dialogVisible==false}" class="button2" @click="dialogVisible=false">预警监控</div>
+            <div :class="{btnbck:dialogVisible==false}" class="btnbck1"> </div>
+            </el-col>
+      </div>
+      <div class="inner_css">
+        <div class="detailList">
+          <div class="list" v-for="(l,i) in lists" :key="i">
+            <div class="title"><i class="el-icon-view" style="font-size:15px"></i> {{l.title}}</div>
+            <ul class="item" style="padding-left:10px">
+                <li v-for="(item,index) in l.items" :key="index">{{item}}</li>
+            </ul>
+        </div>
+        </div>
+        <!--<el-collapse v-model="actionName" accordion>
+        <i class="el-icon-view" style="font-size:10px"></i>
+        <collapse-item title="董允坝" name="1">
           <a>监控点1</a><br>
           <a>监控点2</a><br>
           <a>监控点3</a>
-        </el-collapse-item>
+        </collapse-item>
          <el-collapse-item title="张湾" name="2">
           <a>监控点1</a><br>
           <a>监控点2</a><br>
@@ -28,7 +47,7 @@
           <a>监控点2</a><br>
           <a>监控点3</a>
         </el-collapse-item>
-        </el-collapse>
+        </el-collapse>-->
       </div>
   </el-col>
 </div>
@@ -42,7 +61,13 @@
     },
     data() {
       return {
-         actionName:"1"
+         actionName:"1",
+         dialogVisible:false,
+          lists: [
+                    { title:'董允坝', items:["监控点1", "监控点2", "监控点3"] },
+                    { title:'张湾', items:["监控点2", "监控点3", "监控点4"] },
+                    { title:'黄包山', items:["监控点3", "监控点4", "监控点5"] }
+                ]
       } 
     },
    mounted(){
@@ -55,31 +80,75 @@
   }
 </script>
 <style>
-.inner{
-    margin: 15px;
-    background-color: #2c3e50;
+#monitorDetail{
+  color:#FFFFFF;
+}
+#monitorDetail .el-input{
+  width: 125px;
+  height: 32px;
+  border:none;
+  background-color: #445078;
+  font-size:15px;
+  border-radius:20px;
+  margin:12px;
+   
 }
 #monitorDetail .el-collapse el-collapse-item{
    background-color: #2c3e50 !important;
 }
-.basic-data-num {
-  margin-top: 10px;
-  font-size: 35px;
-  height: 35px;
-}
-.basic-data-item {
-  padding-top:10px;
-  font-size: 20px;
-  color: #e0d8d8;
+.tital{
+  width: 100%;
+  height: 50px;
   text-align: center;
+  font-size: 10px;
 }
-.smallh{
-  height:50px;
+.btnbck1{
+  margin-top:5px;
+  margin-left:38%; 
+  height: 2px;
+  width:23%;
 }
-.tips{
-    margin:3px 0px 0px 15px;
-    font-size: 17px;
-    color: #e0d8d8;
-    text-align: left;
+.btnbck{
+  background-color: #24b3a9;
+}
+.tital .button2:hover{
+  color:#24b3a9;
+}
+.btn2{
+  color:#24b3a9;
+}
+.button2{
+  font-size: 12px;
+  margin-top: 25px
+}
+.detailList{
+  font-size:13px;
+}
+.iconsty{
+   font-size:5px;
+}
+ul{
+    list-style: none;
+}
+li{
+    padding-left: 10px;
+    line-height: 2;
+}
+li:hover{
+    background-color: #2e3550;
+}
+.list{
+    padding: 0px 15px;
+}
+.list .title{
+    padding: 10px 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+.list:not(:nth-of-type(1)) .item{
+    display: none;
 }
 </style>

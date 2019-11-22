@@ -1,7 +1,7 @@
 <template>
 <div id="monitorVideo">
-   <div>
-       <iframe height=520 width=1350 src='http://player.youku.com/embed/XNDM5NDY5NTU0OA==' frameborder=0></iframe>
+   <div class="video_css">
+       <iframe height=500 width=1333 src='http://player.youku.com/embed/XNDM5NDY5NTU0OA==' frameborder=0></iframe>
    </div>
 </div>
 </template>
@@ -28,7 +28,7 @@
 </script>
 <style>
 .video_css{
-    background-color:#ADFF2F;
+    margin:40px 0px 0px 46px;
     height:100%;
     width:100%;
 }

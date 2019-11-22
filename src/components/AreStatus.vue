@@ -1,5 +1,5 @@
 <template>
-<div id="areStatus" style="width: 1710px;height:540px;flex: 1">
+<div id="areStatus" style="width: 1800px;height:590px;flex: 1">
   <baidu-map class="bm-view"  
   ak="HykSaifjf6GhhW1GVP9y3DC5jcz2zpIQ" 
   :center="center" :zoom="zoom" 

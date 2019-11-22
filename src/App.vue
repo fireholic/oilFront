@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="hostApp">
-      <div style="background-color:#17314b;padding:12px 0px 5px 0px">
+      <div style="background-color:#151b2b;padding:12px 0px 5px 0px">
         <img style="float:left;height:35px;padding-left:50px;"  src="./assets/logo.png?v=20171015"  alt=".">
         <h3 style="color:#87CEEB">&nbsp;&nbsp;&nbsp;泸州石油天然气管道外部风险智能监控系统</h3>
       </div>
@@ -20,21 +20,6 @@
           </i>
          </router-link>
           </div>
-        <!--<el-menu default-active="1" 
-        :collapse="false"
-        :router="true"
-        background-color="#2c3e50"
-        text-color="#FFFFFF"
-        :collapse-transition="false">
-          <el-menu-item index="1" route="/NowControl">
-            <i class="el-icon-search"></i>
-            <span class="on-font" slot="title">实时监控</span>
-          </el-menu-item>
-          <el-menu-item index="2" route="/History">
-            <i class="el-icon-time"></i>
-            <span slot="title">历史分析</span>
-          </el-menu-item>
-        </el-menu>-->
       </el-aside>
        <el-main>
             <router-view/>
@@ -100,7 +85,7 @@ export default {
 }
 .el-aside{
     // opacity:1;
-    background-color:#17314b;
+    background-color:#151b2b;
 }
 .el-menu{
   border:0px;
@@ -117,15 +102,18 @@ export default {
    background: url(./assets/bg1.jpg) no-repeat;
 	// background: cover;
   }
-i{
+#app i{
   color: #ffff;
   font-size: 30px;
 }
 .icon_css{
   padding: 5px 0px 5px 0px;
 }
+.el-aside :hover{
+  background-color: #2e3550;
+}
 .active{
- background-color: #7A67EE;
+ background-color: #2e3550;
 }
 .on-font{
   margin-top: 10px;

@@ -1,13 +1,15 @@
 <template>
   <div id="NowControl">
      <el-row>
-        <el-col :span="4">
-           <div style="text-align:center;margin-bottom:20px">
-            <el-button-group class="colWitdth" >
-            <button class="btn button1" @click="dialogVisible=true">全局</button>
-            <button class="btn button1" @click="dialogVisible=false">监控</button>
-            </el-button-group>
-           </div>
+        <el-col :span="4" style="text-align:center;margin-bottom:20px">
+            <div  class="colWitdth"  >
+            <el-col :span="12" >
+            <div :class="{btn1:dialogVisible==true}" class="button1" style="border-top-left-radius:20px;" @click="dialogVisible=true">全局</div>
+             </el-col>
+            <el-col :span="12" >
+            <div :class="{btn1:dialogVisible==false}" class="button1" style="border-top-right-radius:20px;" @click="dialogVisible=false">监控</div>
+             </el-col>
+            </div>
         </el-col>
      </el-row>
      <el-row v-show="dialogVisible==true">
@@ -15,14 +17,14 @@
      </el-row>
      <el-row v-show="dialogVisible==false">
        <el-col :span="5">
-           <div class="step" style="height:150px">
+           <div class="step" style="height:200px">
              <MonitorStatus/>
            </div>
            <div class="step" style="height:350px">
              <MonitorDetail/>
            </div>
        </el-col>
-       <el-col style="height:500px;" :span="18" offset="1">
+       <el-col class="video_coss" style="height:560px;" :span="19">
          <div>
             <MonitorVideo/>
            </div>
@@ -31,7 +33,7 @@
 
      <el-row>
         <el-col :span="24">
-          <div style="padding-bottom: 20px; height:200px"> 
+          <div style="padding-bottom: 20px; height:200px;margin-right:3%"> 
              <PutInfoList/>
             </div>
           </el-col>
@@ -80,9 +82,11 @@ export default {
   height: 400px;
 }
 .colWitdth{
-  width:305px;
+  display:inline;
+  border:none;
+  color:#FFFFFF;
 }
-.el-col{
+#NowControl .el-col{
   font-size:10px;
   /*color:#3B3B3B;
   text-align: center;
@@ -94,18 +98,28 @@ export default {
   margin-bottom: 20px;
   width:305px;
   border-radius:10px;
-  background:  #17314bCC;
+  background:  #151b2bD9;
 }
 .button1{
-  /*border-radius:20px;
-  margin: 0px 0px 0px 10px;*/
+  font-size: 17px;
+  padding-top: 3px;
   height:32px;
-  width:152px;
-  background: url(../assets/btn.png) no-repeat;
+  width:150px;
+  border:none;
+  background:#151b2b;
   color:#FFFFFF;
+}
+.colWitdth .button1:hover{
+  background-color:#24b3a9;
+}
+.btn1{
+  background-color:#24b3a9;
 }
 .container {
   margin: 10px 0px;
+}
+.video_coss{
+   background: url(../assets/border3.png) no-repeat;
 }
 </style>
 

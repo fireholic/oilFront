@@ -3,7 +3,7 @@
   <el-col :span="24">
       <div class="tipPoint">监控风险点</div>
       <div class="inner_css">
-        <el-row style="height:100px">
+        <el-row style="height:120px">
              <el-col :span="7" offset="1">
                <div class="basic-data-item1">
                <div>董允坝</div>
@@ -52,7 +52,7 @@
 .inner_css{
     margin: 15px;
     border-radius:10px;
-    background: #24496e;
+    background: #1b2438;
 }
 .basic-data-num1 {
   margin-top: 10px;
@@ -60,7 +60,7 @@
   height: 35px;
 }
 .basic-data-item1 {
-  padding-top:10px;
+  padding-top:25px;
   font-size: 15px;
   color: #FFFFFF;
   text-align: center;
@@ -70,7 +70,7 @@
 }
 .tipPoint{
     margin: 13px 0px 0px 17px;
-    font-size: 15px;
+    font-size: 16px;
     color: #FFFFFF;
     text-align: left;
 }
