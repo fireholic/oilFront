@@ -12,11 +12,11 @@
             </div>
         </el-col>
      </el-row>
-     <el-row v-show="dialogVisible==true">
+     <el-row  class="map_border" v-show="dialogVisible==true">
         <AreStatus/>
      </el-row>
      <el-row v-show="dialogVisible==false">
-       <el-col :span="5">
+       <el-col :span="4">
            <div class="step" style="height:200px">
              <MonitorStatus/>
            </div>
@@ -24,7 +24,7 @@
              <MonitorDetail/>
            </div>
        </el-col>
-       <el-col class="video_coss" style="height:560px;" :span="19">
+       <el-col class="video_border" style="height:560px;" :span="19">
          <div>
             <MonitorVideo/>
            </div>
@@ -32,8 +32,8 @@
      </el-row>
 
      <el-row>
-        <el-col :span="24">
-          <div style="padding-bottom: 20px; height:200px;margin-right:3%"> 
+        <el-col :span="24" style="height:250px;margin-top:15px">
+          <div style="margin:0% 2% 4% 0%" > 
              <PutInfoList/>
             </div>
           </el-col>
@@ -96,7 +96,6 @@ export default {
 }
 .step{
   margin-bottom: 20px;
-  width:305px;
   border-radius:10px;
   background:  #151b2bD9;
 }
@@ -104,7 +103,6 @@ export default {
   font-size: 17px;
   padding-top: 3px;
   height:32px;
-  width:150px;
   border:none;
   background:#151b2b;
   color:#FFFFFF;
@@ -118,8 +116,12 @@ export default {
 .container {
   margin: 10px 0px;
 }
-.video_coss{
-   background: url(../assets/border3.png) no-repeat;
+.video_border{
+   margin-left:3%; 
+   background: url(../assets/1400_550.png) no-repeat;
+}
+.map_border{
+   background: url(../assets/1800_590.png) no-repeat;
 }
 </style>
 

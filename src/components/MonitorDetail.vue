@@ -7,7 +7,12 @@
                  <div class="tipPoint" style="margin:20px 0px 0px 20px">监控详情</div>
              </el-col>
              <el-col :span="11" offset="1">
-              <el-input placeholder="风险搜索" suffix-icon="el-icon-search" type="text"  v-model="input1" ></el-input>  
+                 <div class="search-box">
+                   <span style="display: inline-block;">
+                   <input placeholder="风险搜索" type="text" class="search-box-input" />
+                   <i class="el-icon-search search_css"></i>
+                   </span>
+                 </div>
              </el-col>    
         </el-row>
       </div>
@@ -30,24 +35,6 @@
             </ul>
         </div>
         </div>
-        <!--<el-collapse v-model="actionName" accordion>
-        <i class="el-icon-view" style="font-size:10px"></i>
-        <collapse-item title="董允坝" name="1">
-          <a>监控点1</a><br>
-          <a>监控点2</a><br>
-          <a>监控点3</a>
-        </collapse-item>
-         <el-collapse-item title="张湾" name="2">
-          <a>监控点1</a><br>
-          <a>监控点2</a><br>
-          <a>监控点3</a>
-         </el-collapse-item>
-       <el-collapse-item title="黄包山" name="3">
-          <a>监控点1</a><br>
-          <a>监控点2</a><br>
-          <a>监控点3</a>
-        </el-collapse-item>
-        </el-collapse>-->
       </div>
   </el-col>
 </div>
@@ -150,5 +137,35 @@ li:hover{
 }
 .list:not(:nth-of-type(1)) .item{
     display: none;
+}
+.search-box {
+    position: relative;
+    box-sizing: border-box;
+    width:130px;
+    height: 30px;
+    margin: 17px 0px 0px 8px; 
+    padding-right: 5px;
+    background-color: #2e3550;
+    border-radius: 21px;
+}
+.search-box-input {
+    float:left;
+    margin-top:5px; 
+    width: 80%;
+    height: 20px;
+    line-height: 20px;
+    text-indent: 17px;
+    border-radius: 20px 0 0 20px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    font-family: Microsoft Yahei;
+}
+.search_css{
+  margin-top:7px; 
+  font-size:17px !important;
+  position: absolute;
+  float:left;
 }
 </style>

@@ -1,10 +1,9 @@
 <template>
   <div id="app" class="hostApp">
-      <div style="background-color:#151b2b;padding:12px 0px 5px 0px">
-        <img style="float:left;height:35px;padding-left:50px;"  src="./assets/logo.png?v=20171015"  alt=".">
-        <h3 style="color:#87CEEB">&nbsp;&nbsp;&nbsp;泸州石油天然气管道外部风险智能监控系统</h3>
-      </div>
-      <el-container >
+     <div class="top_nav">
+
+     </div>
+      <el-container style="height:100%" >
       <el-aside id="left" style="width:70px;text-align: center;">
           <div :class="{active:checkOne=='NowControl'}" class="icon_css" @click="check()">
           <router-link to="/NowControl">
@@ -76,6 +75,11 @@ export default {
     color: #24292e;
     cursor: pointer;
 }
+.top_nav{
+   width:100%;
+   height:50px;
+   background: url(./assets/daohang.png) no-repeat;
+}
 .el-main{
   //background: #f4f4f4;
   //background: #27408B;
@@ -97,7 +101,7 @@ export default {
   .hostApp{
    position: fixed;
    width:100%;
-   //height:100%;
+   height:100%;
    //background-color: rgb(48, 65, 86);
    background: url(./assets/bg1.jpg) no-repeat;
 	// background: cover;
