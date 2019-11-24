@@ -1,9 +1,9 @@
 <template>
 <div id="historyTable">
-  <div style="height:800px">
+  <div style="height:830px">
     <div class="his_top">
     <div style="float:left">
-    <label style="margin:20px 0px 0px 70px;font-size:28px;display: inline-block;">全年异常事件列表</label> 
+    <label style="margin:30px 0px 0px 40px;font-size:20px;display: inline-block;">全年异常事件列表</label> 
     </div>
     <div style="float:right">
       <div class="his_search-box" >
@@ -15,12 +15,12 @@
     </div>
   </div>
   <div class="hist_table_box">
-    <div style="border:4px solid rgb(46,53,80)">
+    <div class="out_box_top" >
     <el-table
     :data="tableData"
      v-loading="loading"
-     highlight-current-row="false"
-    height="630px"
+    highlight-current-row="false"
+    height="622px"
     :row-style="tableRowStyle"
     :header-cell-style="tableHeaderColor">
     <el-table-column
@@ -42,60 +42,19 @@
     </el-table-column>
     <el-table-column
       prop="operate"
-      label="操作">
+      label="事件详细内容">
     </el-table-column>
   </el-table>
-  </div>
-  </div>
-  <!--<el-table
-    :data="tableData"
-     v-loading="loading"
-    stripe
-    height="700px"
-    borer
-    style="width: 100%;background:#151b2bD9;">
-    <el-table-column
-      type="index"
-      label="序号"
-      width="50"
-      fixed>
-    </el-table-column>
-    <el-table-column
-      fixed
-      prop="level"
-      label="异常事件级别">
-    </el-table-column>
-    <el-table-column
-      fixed
-      prop="type"
-      label="异常事件类型">
-    </el-table-column>
-    <el-table-column
-      prop="time"
-      label="事件发生时间"
-      sortable>>
-    </el-table-column>
-    <el-table-column
-      prop="operator"
-      label="事件记录员"
-      sortable>
-    </el-table-column>
-    <el-table-column
-      prop="operate"
-      label="操作"
-      sortable>
-    </el-table-column>
-  </el-table>
-  <div style="padding-top:10px;">
   <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :page-sizes="this.pageSize"
-      :page-size="this.size"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="this.total">
-    </el-pagination>
-    </div>-->
+     background="true"
+     layout="prev, pager, next"
+     @current-change="handleCurrentChange"
+     prev-text="上一页"
+     next-text="下一页"
+    :total="1000">
+   </el-pagination>
+  </div>
+  </div>
   </div>
   </div>
 </template>
@@ -139,7 +98,7 @@ import "echarts/lib/component/tooltip";
         //   this.total = res.data.total;
         //   this.tableData = res.data.data;
         // }
-        for(let i=0;i<13;i++){
+        for(let i=0;i<12;i++){
            let one={"level":"蓝色预警","type":"固定异常事件","time":"2019-01-02","operator":"张三","operate":"查看详情"} 
            this.tableData.push(one);
         }
@@ -151,12 +110,9 @@ import "echarts/lib/component/tooltip";
            //this.customers = res.data;
         //});
        },
-      handleSizeChange(val) {
-        this.size=val;
-        this.queryData();
-      },
       handleCurrentChange(val) {
         this.pageIndex=val;
+        console.log(this.pageIndex)
         this.queryData();
       },
       refresh(){
@@ -186,14 +142,13 @@ import "echarts/lib/component/tooltip";
 <style>
 #historyTable{
  border-radius:20px;
- background:#151b2bD9;
+ background:#151b2bB3;
  color:#FFFFFF;
 }
 .his_top{
   height: 80px;
   background:#2e3550;
   padding-bottom:15px;
-  border-bottom: 2px solid #e6e6e6;
   border-top-left-radius:10px;
   border-top-right-radius:10px;
 }
@@ -202,7 +157,7 @@ import "echarts/lib/component/tooltip";
     box-sizing: border-box;
     width:300x;
     height: 45px;
-    margin: 12px 80px 0px 8px; 
+    margin: 18px 80px 0px 8px; 
     padding-right: 5px;
     background-color:#2e3550;
     border-radius: 21px;
@@ -229,6 +184,17 @@ import "echarts/lib/component/tooltip";
   position: absolute;
   float:left;
 }
+.out_box_top{
+  height:10px;
+  border-radius: 5px;
+  background-color: #2e3550;
+}
+.out_box_botton{
+  height:10px;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+  background-color: #2e3550;
+}
 input::-webkit-input-placeholder {
     color: #FFFFFF;
 }
@@ -236,16 +202,48 @@ input::-webkit-input-placeholder {
   background:#151b2bD9 !important;
 }
 .hist_table_box{
-  margin: 50px;
+  margin: 30px 50px;
   width: 1650px;
   height: 630px;
   background-color:#2e3550;
 }
-.el-table td, .el-table th.is-leaf {
-   text-align: center !important;
+#historyTable .el-table td, .el-table th.is-leaf {
+    text-align: center !important;
     border-bottom: 0px solid !important;
 }
-.el-table tbody tr:hover>td { 
-    background-color:#2e3550!important
+#historyTable .el-table tbody tr:hover>td { 
+    border-bottom: 0px solid !important;
+    background-color:#475070!important
+}
+#historyTable .el-table::before{
+   height:0px !important;
+}
+#historyTable  .el-pagination{
+  padding-top:30px;
+  padding-left:70%;
+  height:80px;
+  background-color: #151b2bFF;
+}
+#historyTable .el-pagination.is-background .btn-prev{
+  background-color: #151b2bFF;
+  color:#FFFFFF;
+  
+}
+#historyTable .el-pagination span{
+  font-size:20px;
+}
+
+#historyTable .el-pagination.is-background .btn-next{
+ background-color: #151b2bFF;
+  color:#FFFFFF;
+  font-size:20px ;
+}
+#historyTable .el-pagination.is-background .el-pager li{
+  background-color: #151b2bFF;
+  color:#FFFFFF;
+  font-size:20px;
+}
+#historyTable .el-pagination.is-background .el-pager li:not(.disabled).active{
+  color:#24b3a9;
 }
 </style>

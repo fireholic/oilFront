@@ -26,13 +26,38 @@
             <div :class="{btnbck:dialogVisible==false}" class="btnbck1"> </div>
             </el-col>
       </div>
-      <div class="inner_css">
+      <div class="inner_css" v-show="dialogVisible==true">
         <div class="detailList">
           <div class="list" v-for="(l,i) in lists" :key="i">
-            <div class="title"><i class="el-icon-view" style="font-size:15px"></i> {{l.title}}</div>
-            <ul class="item" style="padding-left:10px">
-                <li v-for="(item,index) in l.items" :key="index">{{item}}</li>
-            </ul>
+            <div class="title" :class="{btn2:l.show==true}" @click="changeTitle('1',i)">
+              <i class="el-icon-view" :class="{btn2:l.show==true}" style="font-size:15px;margin-right:10px;">
+                </i>{{l.title}}
+                <i v-show="!l.show" class="el-icon-arrow-right" style="font-size:15px;float:right"></i>
+                <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
+            </div>
+            <table v-show="l.show" style="height:100px">
+               <tr v-for="(item,index) in l.items" :key="index">
+                 <td style="padding-left:20px">{{item}}</td>
+               </tr>
+            </table>
+        </div>
+        </div>
+      </div>
+      <div class="inner_css" v-show="dialogVisible==false">
+        <div class="detailList">
+          <div class="list" v-for="(l,i) in lists1" :key="i">
+            <div class="title" :class="{btn2:l.show==true}" @click="changeTitle('2',i)">
+              <i class="el-icon-view" :class="{btn2:l.show==true}" style="font-size:15px;margin-right:10px;">
+                </i>{{l.title}}
+                <i v-show="!l.show" class="el-icon-arrow-right" style="font-size:15px;float:right"></i>
+                <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
+            </div>
+            <table v-show="l.show" style="height:100px">
+               <tr v-for="(item,index) in l.items" :key="index">
+                 <td style="padding-left:20px">{{item.name}}</td>
+                  <td style="padding-left:50px">{{item.time}}</td>
+               </tr>
+            </table>
         </div>
         </div>
       </div>
@@ -51,9 +76,14 @@
          actionName:"1",
          dialogVisible:false,
           lists: [
-                    { title:'董允坝', items:["监控点1", "监控点2", "监控点3"] },
-                    { title:'张湾', items:["监控点2", "监控点3", "监控点4"] },
-                    { title:'黄包山', items:["监控点3", "监控点4", "监控点5"] }
+                    { title:'董允坝', items:["监控点1", "监控点2", "监控点3"],show:true },
+                    { title:'张湾', items:["监控点2", "监控点3", "监控点4"],show:false},
+                    { title:'黄包山', items:["监控点3", "监控点4", "监控点5"],show:false}
+                ],
+          lists1: [
+                    { title:'董允坝', items:[{name:"预警点1",time:"2019-11-24"}, {name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}],show:true },
+                    { title:'张湾', items:[{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}, {name:"预警点1",time:"2019-11-24"}],show:false},
+                    { title:'黄包山', items:[{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}],show:false}
                 ]
       } 
     },
@@ -61,8 +91,24 @@
 
    },
     methods:{
+      changeTitle(type,id){
+        if(type=='1'){
+          this.lists.forEach((list, i) => list.show = i == id)
+        }else{
+          this.lists1.forEach((list, i) => list.show = i == id)
+        }
+         
+      },
+      isShow(name){
+         if(name==this.listShow){
+            return true;
+         }else{
+           return false;
+         }
+      }
     },
     watch: {
+
     }
   }
 </script>
@@ -102,7 +148,7 @@
   color:#24b3a9;
 }
 .btn2{
-  color:#24b3a9;
+  color:#24b3a9 !important;
 }
 .button2{
   font-size: 12px;
