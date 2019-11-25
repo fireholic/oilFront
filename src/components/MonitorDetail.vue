@@ -202,6 +202,7 @@ li:hover{
     line-height: 20px;
     text-indent: 17px;
     border-radius: 20px 0 0 20px;
+    color:#FFFFFF;
     background-color: transparent;
     border: 0;
     outline: 0;

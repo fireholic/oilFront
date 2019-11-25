@@ -174,6 +174,7 @@ import "echarts/lib/component/tooltip";
     text-indent: 17px;
     border-radius: 20px 0 0 20px;
     background-color: transparent;
+    color:#FFFFFF;
     border: 0;
     outline: 0;
     font-size: 16px;
