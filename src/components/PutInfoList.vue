@@ -19,10 +19,10 @@
       <tr v-for="(item,i) in tableData" :key="i">
       <td width="10%" height="45px">{{item.date}}</td>
       <td>{{item.time}}</td>
-      <td>{{item.level}}</td>
-      <td>{{item.point}}</td>
-      <td>{{item.remark}}</td>
-      <td> <el-button type="primary" round>推送</el-button></td>
+      <td>{{item.abnormalLevel}}</td>
+      <td>{{item.abnormalPlace}}</td>
+      <td>{{item.abnormalDesc}}</td>
+      <td> <el-button type="primary" round @click="pushMessage(item.abnormalID)">推送</el-button></td>
      </tr>
   </table>
 </div>
@@ -46,12 +46,29 @@
    },
     methods:{
         queryData(){
-             for(let i=0;i<15;i++){
-           let one={"date":"2019-07-25","time":"15:47:41","level":"蓝色预警",
-           "point":"张湾","remark":"规划建设广场","operate":"操作"} 
+            for(let i=0;i<15;i++){
+           let one={"date":"2019-07-25","time":"15:47:41","abnormalLevel":"蓝色预警",
+           "abnormalPlace":"张湾","abnormalDesc":"规划建设广场","abnormalID":"1"} 
            this.tableData.push(one);
-        }
-        }
+         }
+        },
+        pushMessage(id){
+          this.$confirm('消息将推送至手机, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+          }).then(() => {
+              this.$message({
+              type: 'success',
+              message: '推送成功!'
+           });
+          }).catch(() => {
+             this.$message({
+            type: 'info',
+              message: '已取消推送'
+            });          
+          });
+         }
     },
     watch: {
     }
@@ -59,7 +76,7 @@
 </script>
 <style>
   #putInfoList{
-      border-radius:10px;
+      border-radius:20px;
       background:#151b2bD9;
       margin:0px 0px 10px 3px;
   }

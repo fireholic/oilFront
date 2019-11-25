@@ -2,15 +2,19 @@
 <div id="areStatus" style="margin:25px 0px 0px 25px; width: 1750px;height:565px;flex: 1">
   <baidu-map class="bm-view"  
   ak="HykSaifjf6GhhW1GVP9y3DC5jcz2zpIQ" 
-  :center="center" :zoom="zoom" 
+  :center="center" :zoom="zoom"
   :scroll-wheel-zoom="true"
   :mapStyle="midnight"
   @zoomend="syncCenterAndZoom">
     <bm-view >
       <!--<bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>-->
+      <bm-polygon :path="polygonPath3" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
+      <bm-polygon :path="polygonPath1" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
+      <bm-polygon :path="polygonPath2" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
       <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-      <bm-marker :position="{lng: 116.404, lat: 39.915}" :dragging="true" :icon="{url: this.img2, size: {width: 600, height: 120}}"></bm-marker>
-      <bm-marker :position="{lng: 116.410, lat: 39.915}" :dragging="true" :icon="{url: this.img1, size: {width: 300, height: 157}}"></bm-marker>
+      <bm-marker :position="{lng:  106.06988745568079, lat : 28.76016890114493}"  :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  105.76758038949019, lat : 28.971456106817744}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  105.4973435348364, lat : 28.895940801275302}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
       <!-- <bm-city-list anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-city-list>-->
       <!--<bm-boundary 
         v-for="province in provinces" 
@@ -28,6 +32,7 @@
 
 <script>
 import BaiduMap from "vue-baidu-map/components/map/Map.vue";
+import BmPolygon from "vue-baidu-map/components/overlays/Polygon.vue";
 //import BmGeolocation from "vue-baidu-map/components/controls/Geolocation.vue";
 //import BmlHeatmap from "vue-baidu-map/components/extra/Heatmap.vue";
 import BmMarker from "vue-baidu-map/components/overlays/Marker.vue";
@@ -45,25 +50,35 @@ export default {
     BmMarker,
    // BmBoundary,
     BmNavigation,
+    BmPolygon
    // BmGeolocation
     //BmCityList,
    // BmLabel
   },		    
   data() {
     return {
+      res:{},
       heatData:[],
       show:false,
-      center: "北京",
-      zoom: 15,
+      center: "泸州",
+      zoom: 12,
       district:[],
       sumCost:1,
       sumRepay:1,
       midnight:{style:'midnight'},
       img1:require('../assets/点.png'),
-      img2:require('../assets/椭圆.png')
+      img2:require('../assets/椭圆.png'),
+      polygonPath1:[],
+      polygonPath2:[],
+      polygonPath3:[]
+      
     };
   },
   created(){
+    let data = require("../static/data.json")
+     this.polygonPath1=data.polygonPath1;
+     this.polygonPath2=data.polygonPath2;
+     this.polygonPath3=data.polygonPath3;
     //this.axios.get('/v1/ditricts/PureProfit').then(res => {
      // let geo = new window.BMap.Geocoder();
      // let data= new Array();
