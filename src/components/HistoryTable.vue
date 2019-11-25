@@ -51,7 +51,7 @@
      @current-change="handleCurrentChange"
      prev-text="上一页"
      next-text="下一页"
-    :total="1000">
+    :total="12">
    </el-pagination>
   </div>
   </div>
@@ -98,6 +98,7 @@ import "echarts/lib/component/tooltip";
         //   this.total = res.data.total;
         //   this.tableData = res.data.data;
         // }
+        this.tableData=[];
         for(let i=0;i<12;i++){
            let one={"level":"蓝色预警","type":"固定异常事件","time":"2019-01-02","operator":"张三","operate":"查看详情"} 
            this.tableData.push(one);

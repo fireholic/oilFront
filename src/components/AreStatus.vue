@@ -8,13 +8,13 @@
   @zoomend="syncCenterAndZoom">
     <bm-view >
       <!--<bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>-->
-      <bm-polygon :path="polygonPath3" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
-      <bm-polygon :path="polygonPath1" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
-      <bm-polygon :path="polygonPath2" fill-color="#90EE90" :stroke-opacity="0.5" :stroke-weight="2" storke-style="solid"/>
+      <bm-polygon :path="polygonPath3" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
+      <bm-polygon :path="polygonPath1" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
+      <bm-polygon :path="polygonPath2" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
       <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-      <bm-marker :position="{lng:  106.06988745568079, lat : 28.76016890114493}"  :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
-      <bm-marker :position="{lng:  105.76758038949019, lat : 28.971456106817744}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
-      <bm-marker :position="{lng:  105.4973435348364, lat : 28.895940801275302}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  106.069887456, lat : 28.744336109399999}"  :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  105.76724341400001, lat : 28.955659368300001}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  105.49700656, lat : 28.880132436}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
       <!-- <bm-city-list anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-city-list>-->
       <!--<bm-boundary 
         v-for="province in provinces" 
