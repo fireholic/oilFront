@@ -1,6 +1,6 @@
 <template>
 <div id="historyTable">
-  <div style="height:830px">
+  <div style="height:810px">
     <div class="his_top">
     <div style="float:left">
     <label style="margin:30px 0px 0px 40px;font-size:20px;display: inline-block;">全年异常事件列表</label> 
@@ -195,24 +195,27 @@ input::-webkit-input-placeholder {
 .hist_table_box{
   margin: 30px 50px;
   width: 1650px;
-  height: 630px;
+  height: 600px;
   background-color:#2e3550;
 }
 #historyTable .el-table td, .el-table th.is-leaf {
     text-align: center !important;
     border-bottom: 0px solid !important;
 }
-#historyTable .el-table tbody tr:hover>td { 
+#historyTable .el-table tbody tr:hover td { 
     border-bottom: 0px solid !important;
     background-color:#475070!important
+}
+#historyTable .el-table__body tr.current-row>td{
+   background-color:#475070!important
 }
 #historyTable .el-table::before{
    height:0px !important;
 }
 #historyTable  .el-pagination{
-  padding-top:30px;
-  padding-left:70%;
-  height:80px;
+  padding-top:20px;
+  padding-left:65%;
+  height:60px;
   background-color: #151b2bFF;
 }
 #historyTable .el-pagination.is-background .btn-prev{

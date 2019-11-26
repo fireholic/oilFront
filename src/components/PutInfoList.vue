@@ -57,7 +57,6 @@
           let params = {"data":{"source":1},"key":"dfasdgasdfwer","sid":"12513241235131"};
            this.axios.post(`/data/getNowAbnormal`,params).then(res => {
            if(res.data.data.value) {
-            console.log(res.data.data.value);
             this.tableData = res.data.data.value;
            }
           });    
@@ -68,7 +67,6 @@
           cancelButtonText: '取消',
           type: 'warning'
           }).then(() => {
-             console.log(id);
              let params = {"data":{"abnormalID":id},"key":"dfasdgasdfwer","sid":"12513241235131"};
              this.axios.post(`/data/pushInformation`,params).then(res => {
               if(res.data.data.err_code==0){
