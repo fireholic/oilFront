@@ -19,29 +19,31 @@
     <el-table
     :data="tableData"
      v-loading="loading"
+    :page-size="12"
     highlight-current-row="false"
     height="622px"
     :row-style="tableRowStyle"
     :header-cell-style="tableHeaderColor">
     <el-table-column
-      prop="level"
+      prop="abnormalLevel"
       width="240"
       label="异常事件级别">
     </el-table-column>
     <el-table-column
-      prop="type"
-      label="异常事件类型">
+      prop="abnormalPlace"
+      width="240"
+      label="事件发生地点">
+    </el-table-column>
+    <el-table-column
+      prop="date"
+      label="事件发生日期">
     </el-table-column>
     <el-table-column
       prop="time"
       label="事件发生时间" sortable>
     </el-table-column>
     <el-table-column
-      prop="operator"
-      label="事件记录员">
-    </el-table-column>
-    <el-table-column
-      prop="operate"
+      prop="abnormalDesc"
       label="事件详细内容">
     </el-table-column>
   </el-table>
@@ -51,7 +53,7 @@
      @current-change="handleCurrentChange"
      prev-text="上一页"
      next-text="下一页"
-    :total="12">
+    :total="this.total">
    </el-pagination>
   </div>
   </div>
@@ -71,9 +73,7 @@ import "echarts/lib/component/tooltip";
     data() {
       return {
         pageIndex:1,
-        pageSize:[100,500,1000],
-        size:100,
-        total:400,
+        total:12,
         customers:[],
         selectedCustomers:[],
         tableData:[],
@@ -83,41 +83,30 @@ import "echarts/lib/component/tooltip";
       } 
     },
    mounted(){
-    this.queryData();
-    this.customerList();
+    // if(this.timer){
+    //   clearInterval(this.timer);
+    //   }else{
+    //     this.timer=setInterval(()=>{
+           this.queryData();
+    //     },3000);
+    //   }    
    },
     methods:{
-         toHome(value){
-             this.selectedCustomers=value;
-         },
          queryData() {
-        //   let params = {size:this.size, page:this.pageIndex};
-    
-        //  this.axios.get(`/v1/citys/cityProfit`,{ params: params}).then(res => {
-        // if(res.data) {
-        //   this.total = res.data.total;
-        //   this.tableData = res.data.data;
-        // }
-        this.tableData=[];
-        for(let i=0;i<12;i++){
-           let one={"level":"蓝色预警","type":"固定异常事件","time":"2019-01-02","operator":"张三","operate":"查看详情"} 
-           this.tableData.push(one);
-        }
-        // this.loading=false;   
-        //});    
-       },
-       customerList(){
-           //this.axios.get(`/v1/customers`).then(res => {
-           //this.customers = res.data;
-        //});
+           let params = {"data":{"source":1,"currentPage":this.pageIndex,"pageSize":12},"key":"dfasdgasdfwer","sid":"12513241235131"};
+           this.axios.post(`/data/getAbnormalByPage`,params).then(res => {
+           if(res.data.data.value.data) {
+             console.log(res.data.data.value.data);
+            this.total = res.data.data.value.pageInfo.totalCount;
+            this.tableData = res.data.data.value.data;
+           }
+          });    
        },
       handleCurrentChange(val) {
         this.pageIndex=val;
-        console.log(this.pageIndex)
         this.queryData();
       },
       refresh(){
-        this.loading=true;
         this.queryData();
       },
        tableRowStyle({ row, rowIndex }) {
@@ -247,5 +236,8 @@ input::-webkit-input-placeholder {
 }
 #historyTable .el-pagination.is-background .el-pager li:not(.disabled).active{
   color:#24b3a9;
+}
+#historyTable  .el-table__body-wrapper{
+  background-color: #151b2bFF;
 }
 </style>

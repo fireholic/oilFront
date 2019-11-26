@@ -34,7 +34,7 @@ export default {
 
   },
    created(){
-     this.checkOne=this.$router.history.current.name
+      this.checkOne=this.$router.history.current.name
       console.log(this.checkOne);
   },
   data() {
@@ -103,7 +103,7 @@ export default {
    width:100%;
    height:100%;
    //background-color: rgb(48, 65, 86);
-   background: url(./assets/bg1.jpg) no-repeat;
+   background: url(./assets/bg1.png) no-repeat;
 	// background: cover;
   }
 #app i{

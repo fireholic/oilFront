@@ -2,6 +2,7 @@
 <div id="putInfoList">
    <div style=" padding-bottom:15px;">
     <label class="tips">异常内容列表</label>
+    <!--<button @click="queryData()">测试</button>-->
   </div>
   <div class="table_box">
    <table style="height:20px;margin:10px 20px 0px 0px; width: -webkit-fill-available;">
@@ -42,15 +43,24 @@
       } 
     },
    mounted(){
-        this.queryData();
+     this.queryData();
+      if(this.timer){
+        clearInterval(this.timer);
+       }else{
+       this.timer=setInterval(()=>{
+           this.queryData();
+       },10000);
+      }    
    },
     methods:{
         queryData(){
-            for(let i=0;i<15;i++){
-           let one={"date":"2019-07-25","time":"15:47:41","abnormalLevel":"蓝色预警",
-           "abnormalPlace":"张湾","abnormalDesc":"规划建设广场","abnormalID":"1"} 
-           this.tableData.push(one);
-         }
+          let params = {"data":{"source":1},"key":"dfasdgasdfwer","sid":"12513241235131"};
+           this.axios.post(`/data/getNowAbnormal`,params).then(res => {
+           if(res.data.data.value) {
+            console.log(res.data.data.value);
+            this.tableData = res.data.data.value;
+           }
+          });    
         },
         pushMessage(id){
           this.$confirm('消息将推送至手机, 是否继续?', '提示', {
@@ -58,15 +68,17 @@
           cancelButtonText: '取消',
           type: 'warning'
           }).then(() => {
-              this.$message({
-              type: 'success',
-              message: '推送成功!'
-           });
+             console.log(id);
+             let params = {"data":{"abnormalID":id},"key":"dfasdgasdfwer","sid":"12513241235131"};
+             this.axios.post(`/data/pushInformation`,params).then(res => {
+              if(res.data.data.err_code==0){
+                 this.$message({ type: 'success', message: '推送成功!' });
+              }else{
+                 this.$message({ type: 'error', message: '推送失败!' });
+              }
+            });    
           }).catch(() => {
-             this.$message({
-            type: 'info',
-              message: '已取消推送'
-            });          
+             this.$message({type: 'info', message: '已取消推送' });          
           });
          }
     },

@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
+import qs from 'qs';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueGoogleCharts from 'vue-google-charts'
 import ECharts from 'vue-echarts'
@@ -11,8 +12,8 @@ import ECharts from 'vue-echarts'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
-Vue.use(VueGoogleCharts)
-
+Vue.use(VueGoogleCharts);
+Vue.prototype.$qs = qs;
 Vue.component('v-chart', ECharts)
 
 
