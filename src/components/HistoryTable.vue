@@ -72,6 +72,7 @@ import "echarts/lib/component/tooltip";
     },
     data() {
       return {
+        key:localStorage.getItem('Authorization'),
         pageIndex:1,
         total:12,
         customers:[],
@@ -93,10 +94,12 @@ import "echarts/lib/component/tooltip";
    },
     methods:{
          queryData() {
-           let params = {"data":{"source":1,"currentPage":this.pageIndex,"pageSize":12},"key":"dfasdgasdfwer","sid":"12513241235131"};
+           if(this.key==null || this.key==""){
+               this.$message({ type: 'error', message: '登录过期,请重新登录!' });
+           }
+           let params = {"data":{"source":1,"currentPage":this.pageIndex,"pageSize":12},"key":this.key,"sid":"12513241235131"};
            this.axios.post(`/data/getAbnormalByPage`,params).then(res => {
            if(res.data.data.value.data) {
-             console.log(res.data.data.value.data);
             this.total = res.data.data.value.pageInfo.totalCount;
             this.tableData = res.data.data.value.data;
            }

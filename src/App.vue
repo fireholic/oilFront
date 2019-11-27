@@ -1,10 +1,21 @@
 <template>
   <div id="app" class="hostApp">
-     <div class="top_nav">
-
+     <div v-if="checkKey" class="top_nav">
+       <el-row>
+       <el-col :span="19" style="margin-right:8%;">
+       <div class="nav_top"><span style="margin-left:33%;" @click="showTime();">{{nowTime}}</span></div>
+       </el-col>
+        <el-col :span="3">
+       <div class="nav_top" style="display:flex;">
+         <i class="el-icon-user"></i>
+         <span style="margin:0px 10px;">操作员:张三</span>
+         <i class="el-icon-switch-button" @click="logOut()"></i>
+         </div>
+         </el-col>
+       </el-row>
      </div>
       <el-container style="height:100%" >
-      <el-aside id="left" style="width:70px;text-align: center;">
+      <el-aside v-if="checkKey" id="left" style="width:70px;text-align: center;">
           <div :class="{active:checkOne=='NowControl'}" class="icon_css" @click="check()">
           <router-link to="/NowControl">
           <i class="el-icon-pie-chart">
@@ -33,23 +44,55 @@ export default {
   components: {
 
   },
-   created(){
-      this.checkOne=this.$router.history.current.name
-      console.log(this.checkOne);
+  created(){
+    this.checkOne=this.$router.history.current.name;
   },
+   mounted(){
+     this.timeFormate(new Date());
+      if(this.timer){
+        clearInterval(this.timer);
+       }else{
+       this.timer=setInterval(()=>{
+           this.timeFormate(new Date());
+       },1000);
+      }    
+   },
   data() {
     return {
-     checkOne:""
+     key:localStorage.getItem('Authorization'),
+     checkKey:true,
+     checkOne:"",
+     nowTime:""
     };
   },
   methods:{
     check(){
       this.checkOne=this.$router.history.current.name;
-      console.log(this.checkOne);
-    }
+    },
+    logOut(){
+      this.$router.push({ path: '/'});
+    },
+    timeFormate(timeStamp) {
+      let year = new Date(timeStamp).getFullYear();
+      let month =new Date(timeStamp).getMonth() + 1 < 10? "0" + (new Date(timeStamp).getMonth() + 1): new Date(timeStamp).getMonth() + 1;
+      let date =new Date(timeStamp).getDate() < 10? "0" + new Date(timeStamp).getDate(): new Date(timeStamp).getDate();
+      let hh =new Date(timeStamp).getHours() < 10? "0" + new Date(timeStamp).getHours(): new Date(timeStamp).getHours();
+      let mm =new Date(timeStamp).getMinutes() < 10? "0" + new Date(timeStamp).getMinutes(): new Date(timeStamp).getMinutes();
+      let ss =new Date(timeStamp).getSeconds() < 10? "0" + new Date(timeStamp).getSeconds(): new Date(timeStamp).getSeconds();
+      let week = new Date(timeStamp).getDay();
+      let weeks = ["日","一","二","三","四","五","六"];
+      let getWeek = "星期" + weeks[week];
+      this.nowTime = year + "-" + month + "-" + date+" "+hh+":"+mm+':'+ss+" "+getWeek.toString();
+    },
   },
   watch: {
-
+     $route(to,from){
+     if(to.path!="/Login"){
+        this.checkKey=true;
+     }else{
+        this.checkKey=false;
+     }
+  }
   }
 }
 </script>
@@ -122,5 +165,11 @@ export default {
 .on-font{
   margin-top: 10px;
   font-size: 13px;
+}
+.nav_top{
+  height:35px;color:#FFFFFF;
+  text-align:center;
+  font-size:18px;
+  margin-top:15px;
 }
 </style>

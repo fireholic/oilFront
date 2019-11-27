@@ -6,10 +6,14 @@ import Login from './views/Login.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      redirect: '/Login'
+    },
     {
       path: '/Login',
       name: 'Login',
@@ -27,3 +31,18 @@ export default new Router({
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') {
+    next();
+  } else {
+    let token = localStorage.getItem('Authorization');
+    if (token === 'null' || token === '') {
+      next('/login');
+    } else {
+      next();
+    }
+  }
+});
+
+export default router;

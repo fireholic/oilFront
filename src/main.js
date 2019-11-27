@@ -10,6 +10,8 @@ import ECharts from 'vue-echarts';
 import VideoPlayer from 'vue-video-player';
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
+import './css/bootstrap.min.css'
+import './css/style.css'
 //引入hls.js
 import 'videojs-contrib-hls.js/src/videojs.hlsjs'
 

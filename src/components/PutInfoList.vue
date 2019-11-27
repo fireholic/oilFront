@@ -39,6 +39,7 @@
     },
     data() {
       return {
+          key:localStorage.getItem('Authorization'),
           tableData:[]
       } 
     },
@@ -54,7 +55,7 @@
    },
     methods:{
         queryData(){
-          let params = {"data":{"source":1},"key":"dfasdgasdfwer","sid":"12513241235131"};
+          let params = {"data":{"source":1},"key":this.key,"sid":"12513241235131"};
            this.axios.post(`/data/getNowAbnormal`,params).then(res => {
            if(res.data.data.value) {
             this.tableData = res.data.data.value;
