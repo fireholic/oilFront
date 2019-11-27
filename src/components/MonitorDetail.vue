@@ -1,6 +1,64 @@
 <template>
 <div  id="monitorDetail">
-  <el-col :span="24">
+   <div class="back_box1">
+     <div style="display:flex">
+     <div class="tipPoint" style="margin:10px 0px 0px 10px">监控详情</div>
+     <div class="search-box">
+           <span style="display: inline-block;">
+             <input placeholder="风险搜索" type="text" class="search-box-input" />
+              <i class="el-icon-search search_css"></i>
+            </span>
+       </div>
+     </div>
+     <div class="tital" style="display:flex" >
+            <div class="btn_box">
+            <div :class="{btn2:dialogVisible==true}" class="button2" @click="dialogVisible=true">实时监控</div>
+            <div :class="{btnbck:dialogVisible==true}" class="btnbck1"> </div>
+            </div>
+            <div class="btn_box">
+            <div :class="{btn2:dialogVisible==false}" class="button2" @click="dialogVisible=false">预警监控</div>
+            <div :class="{btnbck:dialogVisible==false}" class="btnbck1"> </div>
+            </div>
+      </div>
+      <div>
+         <div class="inner_css text_left" v-show="dialogVisible==true">
+        <div class="detailList">
+          <div class="list" v-for="(l,i) in lists" :key="i">
+            <div class="title" :class="{btn2:l.show==true}" @click="changeTitle('1',i)">
+              <i class="el-icon-view" :class="{btn2:l.show==true}" style="font-size:15px;margin-right:10px;">
+                </i>{{l.title}}
+                <i v-show="!l.show" class="el-icon-arrow-right" style="font-size:15px;float:right"></i>
+                <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
+            </div>
+            <table v-show="l.show" style="height:100px">
+               <tr v-for="(item,index) in l.items" :key="index">
+                 <td style="padding-left:20px">{{item}}</td>
+               </tr>
+            </table>
+        </div>
+        </div>
+      </div>
+      <div class="inner_css" v-show="dialogVisible==false">
+        <div class="detailList">
+          <div class="list" v-for="(l,i) in lists1" :key="i">
+            <div class="title" :class="{btn2:l.show==true}" @click="changeTitle('2',i)">
+              <i class="el-icon-view" :class="{btn2:l.show==true}" style="font-size:15px;margin-right:10px;">
+                </i>{{l.title}}
+                <i v-show="!l.show" class="el-icon-arrow-right" style="font-size:15px;float:right"></i>
+                <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
+            </div>
+            <table v-show="l.show" style="height:100px">
+               <tr v-for="(item,index) in l.items" :key="index">
+                 <td style="padding-left:20px">{{item.name}}</td>
+                  <td style="padding-left:50px">{{item.time}}</td>
+               </tr>
+            </table>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  <!--<el-col :span="24">
       <div>
          <el-row>
              <el-col :span="11">
@@ -61,7 +119,7 @@
         </div>
         </div>
       </div>
-  </el-col>
+  </el-col>-->
 </div>
 </template>
 
@@ -147,12 +205,16 @@
 .tital .button2:hover{
   color:#24b3a9;
 }
+.btn_box{
+  width: 152px;
+  height:30px;
+}
 .btn2{
   color:#24b3a9 !important;
 }
 .button2{
   font-size: 12px;
-  margin-top: 25px
+  margin-top: 20px
 }
 .detailList{
   font-size:13px;
@@ -190,6 +252,7 @@ li:hover{
     width:130px;
     height: 30px;
     margin: 17px 0px 0px 8px; 
+    margin-left:70px; 
     padding-right: 5px;
     background-color: #2e3550;
     border-radius: 21px;
@@ -197,7 +260,7 @@ li:hover{
 .search-box-input {
     float:left;
     margin-top:5px; 
-    width: 80%;
+    width: 100px;
     height: 20px;
     line-height: 20px;
     text-indent: 17px;
@@ -210,9 +273,9 @@ li:hover{
     font-family: Microsoft Yahei;
 }
 .search_css{
-  margin-top:7px; 
+  margin:7px 5px 0px 0px; 
   font-size:17px !important;
   position: absolute;
-  float:left;
+  float:right;
 }
 </style>

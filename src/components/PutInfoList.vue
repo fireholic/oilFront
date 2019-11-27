@@ -1,13 +1,13 @@
 <template>
 <div id="putInfoList">
-   <div style=" padding-bottom:15px;">
+   <div style=" padding-bottom:5px;">
     <label class="tips">异常内容列表</label>
     <!--<button @click="queryData()">测试</button>-->
   </div>
   <div class="table_box">
    <table style="height:20px;margin:10px 20px 0px 0px; width: -webkit-fill-available;">
      <tr>
-      <th width="10%" height="45px" >日期</th>
+      <th width="100px" height="33px" >日期</th>
       <th>时间</th>
       <th>预警级别</th>
       <th>预警位置</th>
@@ -15,15 +15,15 @@
       <th>操作</th>
      </tr>
   </table>
-<div style="overflow-y: auto; height: 300px;">
+<div style="overflow-y: auto; height: 127px;">
   <table style="margin-top:0px">  
       <tr v-for="(item,i) in tableData" :key="i">
-      <td width="10%" height="45px">{{item.date}}</td>
+      <td width="100px" height="33px">{{item.date}}</td>
       <td>{{item.time}}</td>
       <td>{{item.abnormalLevel}}</td>
       <td>{{item.abnormalPlace}}</td>
       <td>{{item.abnormalDesc}}</td>
-      <td> <el-button type="primary" round @click="pushMessage(item.abnormalID)">推送</el-button></td>
+      <td> <el-button  type="primary" round @click="pushMessage(item.abnormalID)">推送</el-button></td>
      </tr>
   </table>
 </div>
@@ -45,13 +45,13 @@
     },
    mounted(){
      this.queryData();
-      if(this.timer){
+     /* if(this.timer){
         clearInterval(this.timer);
        }else{
        this.timer=setInterval(()=>{
            this.queryData();
        },10000);
-      }    
+      }    */
    },
     methods:{
         queryData(){
@@ -104,7 +104,7 @@
      text-align: center;
      font-size:15px;
      width: 100%;
-     height: 300px;
+     height: 127px;
      margin: 20px 0px 20px 0px;
    }
    div::-webkit-scrollbar{

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="hostApp">
-     <div v-if="checkKey" class="top_nav">
+     <div v-if="true" class="top_nav">
        <el-row>
        <el-col :span="19" style="margin-right:8%;">
        <div class="nav_top"><span style="margin-left:33%;" @click="showTime();">{{nowTime}}</span></div>
@@ -15,7 +15,7 @@
        </el-row>
      </div>
       <el-container style="height:100%" >
-      <el-aside v-if="checkKey" id="left" style="width:70px;text-align: center;">
+      <el-aside v-if="true" id="left" style="width:70px;text-align: center;">
           <div :class="{active:checkOne=='NowControl'}" class="icon_css" @click="check()">
           <router-link to="/NowControl">
           <i class="el-icon-pie-chart">
@@ -128,7 +128,7 @@ export default {
 .el-main{
   //background: #f4f4f4;
   //background: #27408B;
-  margin: 17px 0px 0px 12px;
+  margin: 0px;
   padding:0 !important;
   color:#BFEFFF;
 }
@@ -148,8 +148,8 @@ export default {
    width:100%;
    height:100%;
    //background-color: rgb(48, 65, 86);
-   background: url(./assets/bg1.png) no-repeat;
-	// background: cover;
+   background: url(./assets/bg1.png);
+	 background: cover;
   }
 #app i{
   color: #ffff;

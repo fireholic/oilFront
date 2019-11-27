@@ -1,7 +1,9 @@
 <template>	
 <!-- main -->
  <div id="Login">
-    <img src="../assets/log_tittle_bg.png"/>
+    <header>	
+			<img src="../assets/log_tittle_bg.png" class="img-fluid" height="auto" max-width="100%">
+		</header>
     <div class="container">
         <div class="row row-centered"> 
              <div class="col-md-6 col-centered bg_log">

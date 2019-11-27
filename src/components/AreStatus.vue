@@ -1,5 +1,5 @@
 <template>
-<div id="areStatus" style="margin:25px 0px 0px 25px; width: 1750px;height:565px;flex: 1">
+<div id="areStatus" style="margin:0px 0px 0px 25px; width: 1750px;height:500px;flex: 1">
   <baidu-map class="bm-view"  
   ak="HykSaifjf6GhhW1GVP9y3DC5jcz2zpIQ" 
   :center="center" :zoom="zoom"
@@ -61,7 +61,7 @@ export default {
       heatData:[],
       show:false,
       center: "泸州",
-      zoom: 12,
+      zoom: 13,
       district:[],
       sumCost:1,
       sumRepay:1,
@@ -123,6 +123,7 @@ export default {
 
 <style>
 .bm-view {
+  padding: 25px 0px 0px 0px;
   width: 100%;
   height: 95%;
 }

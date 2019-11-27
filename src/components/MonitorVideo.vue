@@ -1,7 +1,7 @@
 <template>
 <div id="monitorVideo">
    <div class="video_css">
-      <video-player  style="height:500;width:1350px;" class="vjs-custom-skin"  :options="playerOptions"></video-player>
+      <video-player  style="height:450;width:1350px;" class="vjs-custom-skin"  :options="playerOptions"></video-player>
          <!-- <iframe height=500 width=1350 frameborder=0>
      <object type='application/x-vlc-plugin' pluginspage="http://www.videolan.org/" id='vlc' events='false' width="720" height="410">
            <param name='mrl' value='rtsp://admin:12345@192.168.10.235:554/h264/ch1/main/av_stream' />
@@ -46,7 +46,7 @@
             muted: false, //默认情况下将会消除任何音频。
             loop: false, //导致视频一结束就重新开始。
             language: 'zh-CN',
-            aspectRatio: '27:10', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+            aspectRatio: '130:45', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
             sources: [{
                   type: 'application/x-mpegURL',
@@ -70,11 +70,11 @@
 <style>
 .video_css{
     margin:25px 0px 0px 25px;
-    height:500;
-    width:1350px;
+    height:450;
+    width:1400px;
 }
 #monitorVideo .video-js .vjs-tech{
-    width:1350px;
-    height:500px;
+    width:1400px;
+    height:450px;
 }
 </style>

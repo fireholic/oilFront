@@ -1,11 +1,11 @@
 <template>
 <div id="historyTable">
   <div style="height:810px">
-    <div class="his_top">
-    <div style="float:left">
+    <div class="his_top" style="display:flex">
+    <div>
     <label style="margin:30px 0px 0px 40px;font-size:20px;display: inline-block;">全年异常事件列表</label> 
     </div>
-    <div style="float:right">
+    <div style="margin:0px 0px 0px auto;">
       <div class="his_search-box" >
              <span>
              <input placeholder="指定事件搜索" type="text" class="his_search-box-input" />
@@ -53,7 +53,7 @@
      @current-change="handleCurrentChange"
      prev-text="上一页"
      next-text="下一页"
-    :total="this.total">
+    :page-count="total">
    </el-pagination>
   </div>
   </div>
@@ -100,7 +100,7 @@ import "echarts/lib/component/tooltip";
            let params = {"data":{"source":1,"currentPage":this.pageIndex,"pageSize":12},"key":this.key,"sid":"12513241235131"};
            this.axios.post(`/data/getAbnormalByPage`,params).then(res => {
            if(res.data.data.value.data) {
-            this.total = res.data.data.value.pageInfo.totalCount;
+            this.total = res.data.data.value.pageInfo.totalPage;
             this.tableData = res.data.data.value.data;
            }
           });    
