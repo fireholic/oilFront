@@ -60,7 +60,7 @@ export default {
   data() {
     return {
      key:localStorage.getItem('Authorization'),
-     checkKey:true,
+     checkKey:false,
      checkOne:"",
      nowTime:""
     };
@@ -71,6 +71,7 @@ export default {
     },
     logOut(){
       this.$router.push({ path: '/'});
+      this.checkKey=false;
     },
     timeFormate(timeStamp) {
       let year = new Date(timeStamp).getFullYear();
@@ -87,10 +88,11 @@ export default {
   },
   watch: {
      $route(to,from){
-     if(to.path!="/Login"){
-        this.checkKey=true;
-     }else{
+       console.log(to.path);
+     if(to.path=="/Login"||to.path=="/"){
         this.checkKey=false;
+     }else{
+        this.checkKey=true;
      }
   }
   }
