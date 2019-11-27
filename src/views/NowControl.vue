@@ -1,6 +1,6 @@
 <template>
   <div id="NowControl">
-  <div class="back_box" style="display:flex">
+  <div class="back_box" style="margin:30px 0px 10px 25px;display:flex">
      <div :class="{btn1:dialogVisible==true}" class="button1" style="border-top-left-radius:20px;" @click="dialogVisible=true">全局</div>
      <div :class="{btn1:dialogVisible==false}" class="button1" style="border-top-right-radius:20px;" @click="dialogVisible=false">监控</div>
   </div>
@@ -43,7 +43,7 @@
 
      <el-row>
         <el-col :span="24" style="height:160px;">
-          <div style="margin:0% 2% 4% 0%" > 
+          <div style="margin:10px 35px 0px 15px" > 
              <PutInfoList/>
             </div>
           </el-col>
@@ -106,7 +106,7 @@ export default {
   background:#66CD00;*/
 }
 #NowControl .back_box{
-  margin:17px 0px 0px 15px;
+  margin:17px 0px 0px 25px;
   width:304;
 }
 .step{
