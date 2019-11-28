@@ -1,5 +1,5 @@
 <template>
-<div id="areStatus" style="margin:0px 0px 0px 25px; width: 1750px;height:500px;flex: 1">
+<div id="areStatus" style="margin:0px 0px 0px 25px; width: 1700px;height:100%;flex: 1">
   <baidu-map class="bm-view"  
   ak="HykSaifjf6GhhW1GVP9y3DC5jcz2zpIQ" 
   :center="center" :zoom="zoom"
@@ -12,9 +12,9 @@
       <bm-polygon :path="polygonPath1" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
       <bm-polygon :path="polygonPath2" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
       <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-      <bm-marker :position="{lng:  106.069887456, lat : 28.744336109399999}"  :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
-      <bm-marker :position="{lng:  105.76724341400001, lat : 28.955659368300001}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
-      <bm-marker :position="{lng:  105.49700656, lat : 28.880132436}" :icon="{url: this.img1, size: {width: 45, height: 70}}"></bm-marker>
+      <bm-marker :position="{lng:  106.069887456, lat : 28.744336109399999}"  :icon="{url: this.img1, size: {width: 20, height: 32}}"></bm-marker>
+      <bm-marker :position="{lng:  105.76724341400001, lat : 28.955659368300001}" :icon="{url: this.img1, size: {width:20, height: 32}}"></bm-marker>
+      <bm-marker :position="{lng:  105.49700656, lat : 28.880132436}" :icon="{url: this.img1, size: {width: 20, height: 32}}"></bm-marker>
       <!-- <bm-city-list anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-city-list>-->
       <!--<bm-boundary 
         v-for="province in provinces" 

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="hostApp">
-     <div v-if="true" class="top_nav">
+     <div v-if="checkKey" class="top_nav">
        <el-row>
        <el-col :span="19" style="margin-right:8%;">
        <div class="nav_top"><span style="margin-left:33%;" @click="showTime();">{{nowTime}}</span></div>
@@ -15,7 +15,7 @@
        </el-row>
      </div>
       <el-container style="height:100%" >
-      <el-aside v-if="true" id="left" style="width:70px;text-align: center;">
+      <el-aside v-if="checkKey" id="left" style="width:70px;text-align: center;">
           <div :class="{active:checkOne=='NowControl'}" class="icon_css" @click="check()">
           <router-link to="/NowControl">
           <i class="el-icon-pie-chart">
@@ -48,6 +48,7 @@ export default {
     this.checkOne=this.$router.history.current.name;
   },
    mounted(){
+     this.check();
      this.timeFormate(new Date());
       if(this.timer){
         clearInterval(this.timer);
@@ -68,6 +69,13 @@ export default {
   methods:{
     check(){
       this.checkOne=this.$router.history.current.name;
+    },
+    checkToken(){
+      console.log(this.key);
+      if(this.key!=null || this.key!=""){
+         this.checkKey=false;
+      }
+     
     },
     logOut(){
       this.$router.push({ path: '/'});

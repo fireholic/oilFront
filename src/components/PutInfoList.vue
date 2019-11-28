@@ -68,7 +68,7 @@
           cancelButtonText: '取消',
           type: 'warning'
           }).then(() => {
-             let params = {"data":{"abnormalID":id},"key":"dfasdgasdfwer","sid":"12513241235131"};
+             let params = {"data":{"abnormalID":id},"key":this.key,"sid":"12513241235131"};
              this.axios.post(`/data/pushInformation`,params).then(res => {
               if(res.data.data.err_code==0){
                  this.$message({ type: 'success', message: '推送成功!' });

@@ -14,7 +14,7 @@
         <MonitorDetail/>
       </div>
     </div>
-    <div class="video_border" style="height:500px;">
+    <div class="video_border">
        <MonitorVideo/>
     </div>
     </div>
@@ -136,14 +136,14 @@ export default {
 .video_border{
    margin-left:3%; 
    width:1400px;
-   height:500px;
-   background-size:1400px 500px;
-   background: url(../assets/1400_550.png) no-repeat;
+   height:525px;
+   background: url(../assets/1400_525.png) no-repeat;
 }
 .map_border{
-  height:530px;
-  width: 1800px;
-   background: url(../assets/1800_590.png) no-repeat;
+   margin-left:45px;
+   width:1800px;
+   height:525px;
+   background: url(../assets/1750_525.png) no-repeat;
 }
 </style>
 
