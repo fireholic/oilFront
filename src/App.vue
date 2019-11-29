@@ -101,6 +101,7 @@ export default {
      }else{
         this.checkKey=true;
      }
+      this.checkOne=this.$router.history.current.name;
   }
   }
 }
