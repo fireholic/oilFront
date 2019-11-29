@@ -8,7 +8,7 @@
         <el-col :span="3">
        <div class="nav_top" style="display:flex;">
          <i class="el-icon-user"></i>
-         <span style="margin:0px 10px;">操作员:张三</span>
+         <span style="margin:0px 10px; width:100px">操作员:张三</span>
          <i class="el-icon-switch-button" @click="logOut()"></i>
          </div>
          </el-col>
@@ -49,6 +49,7 @@ export default {
   },
    mounted(){
      this.check();
+     this.checkToken();
      this.timeFormate(new Date());
       if(this.timer){
         clearInterval(this.timer);
@@ -71,9 +72,8 @@ export default {
       this.checkOne=this.$router.history.current.name;
     },
     checkToken(){
-      console.log(this.key);
-      if(this.key!=null || this.key!=""){
-         this.checkKey=false;
+      if((this.key!=null || this.key!="")&&(this.$route.name!="Login")){
+         this.checkKey=true;
       }
      
     },
@@ -96,7 +96,6 @@ export default {
   },
   watch: {
      $route(to,from){
-       console.log(to.path);
      if(to.path=="/Login"||to.path=="/"){
         this.checkKey=false;
      }else{
@@ -157,7 +156,7 @@ export default {
    height:100%;
    //background-color: rgb(48, 65, 86);
    background: url(./assets/bg1.png);
-	 background: cover;
+   background: cover;
   }
 #app i{
   color: #ffff;

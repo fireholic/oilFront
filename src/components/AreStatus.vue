@@ -1,6 +1,8 @@
 <template>
-<div id="areStatus" style="margin:0px 0px 0px 25px; width: 1700px;height:100%;flex: 1">
-  <baidu-map class="bm-view"  
+<div id="areStatus" style="margin:0px 0px 0px 15px; width: 1700px;height:100%;flex: 1">
+  <el-row>
+    <el-col :span="24">
+       <baidu-map class="bm-view"  
   ak="HykSaifjf6GhhW1GVP9y3DC5jcz2zpIQ" 
   :center="center" :zoom="zoom"
   :scroll-wheel-zoom="true"
@@ -27,6 +29,8 @@
       <bml-heatmap :data="heatData" :max="30000" :radius="30"></bml-heatmap>-->
     </bm-view>
   </baidu-map>
+    </el-col>
+  </el-row>
   </div>
 </template>
 
@@ -125,7 +129,7 @@ export default {
 .bm-view {
   padding: 25px 0px 0px 0px;
   width: 100%;
-  height: 95%;
+  height: 500px;
 }
 .anchorBL{
   display:none;

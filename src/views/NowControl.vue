@@ -14,13 +14,21 @@
         <MonitorDetail/>
       </div>
     </div>
+    <div class="big_box">
     <div class="video_border">
-       <MonitorVideo/>
+       <div class="video_box">
+         <MonitorVideo/>
+      </div>  
+    </div>
     </div>
     </div>
   </div>
-  <div class="map_border" v-show="dialogVisible==true">
-        <AreStatus/>
+  <div class="are_box" v-show="dialogVisible==true">
+  <div class="map_border" >
+     <div class="map_box">
+      <AreStatus/>
+   </div>
+  </div>
   </div>
     <!-- <el-row  class="map_border" v-show="dialogVisible==true">
         <AreStatus/>
@@ -133,13 +141,26 @@ export default {
 .container {
   margin: 10px 0px;
 }
+.big_box{
+   width:1700px;
+   height:525px; 
+}
 .video_border{
-   margin-left:3%; 
-   width:1400px;
-   height:525px;
-   background: url(../assets/1400_525.png) no-repeat;
+   margin-left:50px;
+   position: relative;
+   width:auto;
+   height:100%; 
+   background-image: url(../assets/1400_525.png);
+   background-size: 95% auto;
+   background-repeat: no-repeat;
+}
+.video_box{
+   margin:0p;
+   width:100%;
+   height:100%;
 }
 .map_border{
+   position: relative;
    margin-left:45px;
    width:1800px;
    height:525px;
