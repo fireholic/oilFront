@@ -49,7 +49,7 @@
             </div>
             <table v-show="l.show" style="height:100px">
                <tr v-for="(item,index) in l.items" :key="index">
-                 <td style="padding-left:20px">{{item.name}}</td>
+                  <td style="padding-left:20px">{{item.name}}</td>
                   <td style="padding-left:50px">{{item.time}}</td>
                </tr>
             </table>
@@ -183,6 +183,9 @@
   border-radius:20px;
   margin:12px;
    
+}
+#monitorDetail table tr:hover{
+  color:#24b3a9;
 }
 #monitorDetail .el-collapse el-collapse-item{
    background-color: #2c3e50 !important;
