@@ -1,5 +1,5 @@
 <template>
-<div id="areStatus" style="margin:0px 0px 0px 15px; width: 1700px;height:100%;flex: 1">
+<div id="areStatus" style="margin:0px 0px 0px 25px; width: 1700px;height:100%;flex: 1">
   <el-row>
     <el-col :span="24">
        <baidu-map class="bm-view"  

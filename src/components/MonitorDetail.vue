@@ -31,8 +31,8 @@
                 <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
             </div>
             <table v-show="l.show" style="height:100px">
-               <tr v-for="(item,index) in l.items" :key="index">
-                 <td style="padding-left:20px">{{item}}</td>
+               <tr v-for="(item,index) in l.items" :key="index" @click="changeDetial('1',index)">
+                 <td  :class="{active:item.show}" style="padding-left:20px">{{item.name}}</td>
                </tr>
             </table>
         </div>
@@ -135,9 +135,9 @@
          actionName:"1",
          dialogVisible:true,
           lists: [
-                    { title:'董允坝', items:["监控点1", "监控点2", "监控点3"],show:true },
-                    { title:'张湾', items:["监控点2", "监控点3", "监控点4"],show:false},
-                    { title:'黄包山', items:["监控点3", "监控点4", "监控点5"],show:false}
+                    { title:'董允坝', items:[{name:"监控点1",show:true},{name:"监控点2",show:false},{name:"监控点3",show:false}],show:true },
+                    { title:'张湾', items:[{name:"监控点1",show:false},{name:"监控点2",show:false},{name:"监控点3",show:false}],show:false},
+                    { title:'黄包山', items:[{name:"监控点1",show:false},{name:"监控点2",show:false},{name:"监控点3",show:false}],show:false}
                 ],
           lists1: [
                     { title:'董允坝', items:[{name:"预警点1",time:"2019-11-24",show:true}, {name:"预警点1",time:"2019-11-24",show:false},{name:"预警点1",time:"2019-11-24",show:false}],show:true },
@@ -153,15 +153,17 @@
       changeTitle(type,id){
         if(type=='1'){
           this.lists.forEach((list, i) => list.show = i == id);
+          this.titalIndex=id;
         }else{
           this.lists1.forEach((list, i) => list.show = i == id); 
+          this.titalIndex=id;
         }   
       },
       changeDetial(type,id){
         if(type=='1'){
-          this.lists.forEach((list1) => list1.items.forEach((list,i) => list.show = i == id));
+          this.lists[this.titalIndex].items.forEach((list,i) => list.show = i == id);
         }else{
-          this.lists1.forEach((list1) => list1.items.forEach((list,i) => list.show = i == id));
+         this.lists1[this.titalIndex].items.forEach((list,i) => list.show = i == id);
         }   
       },
       isShow(name){
