@@ -9,16 +9,32 @@
     <div style="display:block">
      <div class="step" style="width:304px;height:160px">
              <MonitorStatus/>
-        </div>
-         <div class="step" style="width:304px;height:345px">
-        <MonitorDetail/>
       </div>
+     <div class="step" style="width:304px;height:345px">
+        <MonitorDetail @changeMon="getDetailMsg"/>
+     </div>
     </div>
     <div class="big_box">
     <div class="video_border">
-       <div class="video_box">
-         <MonitorVideo/>
-      </div>  
+       <div class="video_box" v-if="showNow==true">
+         <MonitorVideoNow/>
+      </div> 
+       <div class="video_box" v-if="showNow==false">
+         <div class="sprit_box">
+         <el-col :span="12">
+         <MonitorVideoWarn/>
+         </el-col>
+         <el-col :span="12">
+         <MonitorVideoWarn/>
+         </el-col>
+         <el-col :span="12">
+         <MonitorVideoWarn/>
+         </el-col>
+         <el-col :span="12">
+         <MonitorVideoWarn/>
+         </el-col>
+          </div>>
+      </div> 
     </div>
     </div>
     </div>
@@ -63,8 +79,9 @@
 import MonitorStatus from "../components/MonitorStatus.vue";
 import MonitorDetail from "../components/MonitorDetail.vue";
 import PutInfoList from "../components/PutInfoList.vue";
-import MonitorVideo from "../components/MonitorVideo.vue"
-import AreStatus from "../components/AreStatus.vue"
+import MonitorVideoNow from "../components/MonitorVideoNow.vue";
+import MonitorVideoWarn from "../components/MonitorVideoWarn.vue";
+import AreStatus from "../components/AreStatus.vue";
 
 export default {
   name: "NowControl",
@@ -72,16 +89,20 @@ export default {
      MonitorStatus,
      MonitorDetail,
      PutInfoList,
-     MonitorVideo,
+     MonitorVideoNow,
+     MonitorVideoWarn,
      AreStatus
   },
   data() {
     return {
+     showNow:true,
      dialogVisible:true
     };
   },
   methods:{
-
+     getDetailMsg(flag){
+       this.showNow = flag;
+     }
   },
   watch: {
 
@@ -105,7 +126,7 @@ export default {
   color:#FFFFFF;
 }
 #NowControl .el-col{
-  margin:0px 0px 0px 10px;
+  margin:0px;
   font-size:10px;
   /*color:#3B3B3B;
   text-align: center;
@@ -155,8 +176,8 @@ export default {
    background-repeat: no-repeat;
 }
 .video_box{
-   margin:0p;
-   width:100%;
+   padding:1.8% 0 0 1.8%;
+   width:98%;
    height:100%;
 }
 .map_border{
@@ -165,6 +186,10 @@ export default {
    width:1800px;
    height:525px;
    background: url(../assets/1750_525.png) no-repeat;
+}
+.sprit_box{
+  width: 95%;
+  height:100%;
 }
 </style>
 

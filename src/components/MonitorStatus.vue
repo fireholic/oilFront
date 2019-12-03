@@ -85,7 +85,7 @@
   height: 35px;
 }
 .basic-data-item1 {
-  margin-top: 5px;
+  margin: 5px 0px 0px 10px;
   padding-top:10px;
   font-size: 15px;
   color: #FFFFFF;

@@ -12,11 +12,11 @@
      </div>
      <div class="tital" style="display:flex" >
             <div class="btn_box">
-            <div :class="{btn2:dialogVisible==true}" class="button2" @click="dialogVisible=true">实时监控</div>
+            <div :class="{btn2:dialogVisible==true}" class="button2" @click="showMon(true)">实时监控</div>
             <div :class="{btnbck:dialogVisible==true}" class="btnbck1"> </div>
             </div>
             <div class="btn_box">
-            <div :class="{btn2:dialogVisible==false}" class="button2" @click="dialogVisible=false">预警监控</div>
+            <div :class="{btn2:dialogVisible==false}" class="button2" @click="showMon(false)">预警监控</div>
             <div :class="{btnbck:dialogVisible==false}" class="btnbck1"> </div>
             </div>
       </div>
@@ -48,9 +48,9 @@
                 <i v-show="l.show" class="el-icon-arrow-down" style="font-size:15px;float:right"></i>
             </div>
             <table v-show="l.show" style="height:100px">
-               <tr v-for="(item,index) in l.items" :key="index">
-                  <td style="padding-left:20px">{{item.name}}</td>
-                  <td style="padding-left:50px">{{item.time}}</td>
+               <tr v-for="(item,index) in l.items" :key="index" @click="changeDetial('2',index)">
+                  <td  :class="{active:item.show}" style="padding-left:20px">{{item.name}}</td>
+                  <td  :class="{active:item.show}" style="padding-left:50px">{{item.time}}</td>
                </tr>
             </table>
         </div>
@@ -131,17 +131,18 @@
     },
     data() {
       return {
+         titalIndex:0,
          actionName:"1",
-         dialogVisible:false,
+         dialogVisible:true,
           lists: [
                     { title:'董允坝', items:["监控点1", "监控点2", "监控点3"],show:true },
                     { title:'张湾', items:["监控点2", "监控点3", "监控点4"],show:false},
                     { title:'黄包山', items:["监控点3", "监控点4", "监控点5"],show:false}
                 ],
           lists1: [
-                    { title:'董允坝', items:[{name:"预警点1",time:"2019-11-24"}, {name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}],show:true },
-                    { title:'张湾', items:[{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}, {name:"预警点1",time:"2019-11-24"}],show:false},
-                    { title:'黄包山', items:[{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"},{name:"预警点1",time:"2019-11-24"}],show:false}
+                    { title:'董允坝', items:[{name:"预警点1",time:"2019-11-24",show:true}, {name:"预警点1",time:"2019-11-24",show:false},{name:"预警点1",time:"2019-11-24",show:false}],show:true },
+                    { title:'张湾', items:[{name:"预警点1",time:"2019-11-24",show:false},{name:"预警点1",time:"2019-11-24",show:false}, {name:"预警点1",time:"2019-11-24",show:false}],show:false},
+                    { title:'黄包山', items:[{name:"预警点1",time:"2019-11-24",show:false},{name:"预警点1",time:"2019-11-24",show:false},{name:"预警点1",time:"2019-11-24",show:false}],show:false}
                 ]
       } 
     },
@@ -151,11 +152,17 @@
     methods:{
       changeTitle(type,id){
         if(type=='1'){
-          this.lists.forEach((list, i) => list.show = i == id)
+          this.lists.forEach((list, i) => list.show = i == id);
         }else{
-          this.lists1.forEach((list, i) => list.show = i == id)
-        }
-         
+          this.lists1.forEach((list, i) => list.show = i == id); 
+        }   
+      },
+      changeDetial(type,id){
+        if(type=='1'){
+          this.lists.forEach((list1) => list1.items.forEach((list,i) => list.show = i == id));
+        }else{
+          this.lists1.forEach((list1) => list1.items.forEach((list,i) => list.show = i == id));
+        }   
       },
       isShow(name){
          if(name==this.listShow){
@@ -163,7 +170,11 @@
          }else{
            return false;
          }
-      }
+      },
+      showMon(flag){
+      this.dialogVisible=flag;
+      this.$emit('changeMon',flag);
+     }
     },
     watch: {
 
@@ -186,6 +197,10 @@
 }
 #monitorDetail table tr:hover{
   color:#24b3a9;
+}
+#monitorDetail .active{
+  color:#24b3a9;
+  background: #1b2438;
 }
 #monitorDetail .el-collapse el-collapse-item{
    background-color: #2c3e50 !important;

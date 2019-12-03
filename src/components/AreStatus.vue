@@ -8,7 +8,7 @@
   :scroll-wheel-zoom="true"
   :mapStyle="midnight"
   @zoomend="syncCenterAndZoom">
-    <bm-view >
+    <bm-view>
       <!--<bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>-->
       <bm-polygon :path="polygonPath3" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
       <bm-polygon :path="polygonPath1" fill-color="#90EE90" :stroke-opacity="0.9" :stroke-weight="2" storke-style="solid"/>
@@ -17,6 +17,9 @@
       <bm-marker :position="{lng:  106.069887456, lat : 28.744336109399999}"  :icon="{url: this.img1, size: {width: 20, height: 32}}"></bm-marker>
       <bm-marker :position="{lng:  105.76724341400001, lat : 28.955659368300001}" :icon="{url: this.img1, size: {width:20, height: 32}}"></bm-marker>
       <bm-marker :position="{lng:  105.49700656, lat : 28.880132436}" :icon="{url: this.img1, size: {width: 20, height: 32}}"></bm-marker>
+      
+      <bm-polyline :path="polylinePath" stroke-color="#3c93fd" :stroke-opacity="0.5" :stroke-weight="6" :editing="false"></bm-polyline>
+
       <!-- <bm-city-list anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-city-list>-->
       <!--<bm-boundary 
         v-for="province in provinces" 
@@ -37,6 +40,7 @@
 <script>
 import BaiduMap from "vue-baidu-map/components/map/Map.vue";
 import BmPolygon from "vue-baidu-map/components/overlays/Polygon.vue";
+import BmPolyline from "vue-baidu-map/components/overlays/Polyline.vue";
 //import BmGeolocation from "vue-baidu-map/components/controls/Geolocation.vue";
 //import BmlHeatmap from "vue-baidu-map/components/extra/Heatmap.vue";
 import BmMarker from "vue-baidu-map/components/overlays/Marker.vue";
@@ -54,7 +58,8 @@ export default {
     BmMarker,
    // BmBoundary,
     BmNavigation,
-    BmPolygon
+    BmPolygon,
+    BmPolyline
    // BmGeolocation
     //BmCityList,
    // BmLabel
@@ -74,7 +79,8 @@ export default {
       img2:require('../assets/椭圆.png'),
       polygonPath1:[],
       polygonPath2:[],
-      polygonPath3:[]
+      polygonPath3:[],
+      polylinePath:[]
       
     };
   },
@@ -83,6 +89,12 @@ export default {
      this.polygonPath1=data.polygonPath1;
      this.polygonPath2=data.polygonPath2;
      this.polygonPath3=data.polygonPath3;
+     this.polylinePath=[{lng:  105.48456141344735, lat : 28.870368167268992},
+                        {lng:  105.51100756782968, lat : 28.887497816430908},
+                        {lng:  105.75219540210793, lat : 28.960541940362752},
+                        {lng:  105.78188548531251, lat : 28.949671193772261},
+                        {lng:  106.05890975700666, lat : 28.755738271708484},
+                        {lng:  106.07596188619306, lat : 28.729716596529101}];
     //this.axios.get('/v1/ditricts/PureProfit').then(res => {
      // let geo = new window.BMap.Geocoder();
      // let data= new Array();
